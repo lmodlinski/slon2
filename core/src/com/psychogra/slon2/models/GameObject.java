@@ -1,6 +1,6 @@
 package com.psychogra.slon2.models;
 
-import com.psychogra.slon2.BundleManagement.GraphicAssetDTO;
+import com.psychogra.slon2.BundleManagement.GraphicAsset;
 
 /**
  * Created by lmodlinski on 23/09/2017.
@@ -11,11 +11,11 @@ public abstract class GameObject
 
 	private String name;
 
-	private GraphicAssetDTO image;
+	private GraphicAsset image;
 
 	private String positionGroup;
 
-	public GameObject(String id, String name, GraphicAssetDTO image, String positionGroup)
+	public GameObject(String id, String name, GraphicAsset image, String positionGroup)
 	{
 		this.id = id;
 		this.name = name;
@@ -33,7 +33,7 @@ public abstract class GameObject
 		return name;
 	}
 
-	public GraphicAssetDTO getImage()
+	public GraphicAsset getImage()
 	{
 		return image;
 	}
