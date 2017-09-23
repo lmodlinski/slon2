@@ -24,6 +24,9 @@ public class SlonMain extends ApplicationAdapter {
     PotGame gra;
 	@Override
 	public void create () {
+
+        config.setRatio(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+
         GraphicAsset asset = new GraphicAsset("objekt",new Texture("badlogic.jpg"));
 		batch = new SpriteBatch();
         Obj = new Ingredient("id","salata",asset,new Vector2(10,10),asset,asset,"droping","draging",0.5f);
@@ -43,9 +46,6 @@ public class SlonMain extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-        int cameraWidth = Gdx.graphics.getWidth();
-        int cameraHeight = Gdx.graphics.getHeight();
-
 
 		Gdx.gl.glClearColor(1, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
