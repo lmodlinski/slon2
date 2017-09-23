@@ -1,9 +1,10 @@
 package com.psychogra.slon2.models.game;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
+import com.psychogra.slon2.models.pot.Dish;
 import com.psychogra.slon2.models.pot.Ingredient;
 import com.psychogra.slon2.models.pot.Pot;
-import com.psychogra.slon2.models.pot.Recipe;
 
 import java.util.ArrayList;
 
@@ -13,17 +14,17 @@ import java.util.ArrayList;
 
 public class PotGame extends Game
 {
-	protected Recipe recipe;
+	protected Dish dish;
 
 	protected Pot pot;
 
 	protected ArrayList<Ingredient> progress;
 
-	public PotGame(GraphicAsset background, String music, Recipe recipe, Pot pot)
+	public PotGame(GraphicAsset background, String music, Dish dish, Pot pot)
 	{
 		super(background, music);
 
-		this.recipe = recipe;
+		this.dish = dish;
 		this.pot = pot;
 	}
 
@@ -33,14 +34,23 @@ public class PotGame extends Game
 		this.progress = new ArrayList<Ingredient>();
 	}
 
+	@Override
+	public void render(SpriteBatch batch)
+	{
+		super.render(batch);
+		
+		this.dish.render(batch);
+		this.pot.render(batch);
+	}
+
 	public void drop(Ingredient ingredient)
 	{
 
 	}
 
-	public Recipe getRecipe()
+	public Dish getDish()
 	{
-		return recipe;
+		return dish;
 	}
 
 	public Pot getPot()
