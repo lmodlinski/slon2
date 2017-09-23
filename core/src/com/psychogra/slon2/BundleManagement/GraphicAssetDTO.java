@@ -1,20 +1,18 @@
 package com.psychogra.slon2.BundleManagement;
 
-/**
- * Created by juna8001 on 23.09.2017.
- */
+import com.badlogic.gdx.graphics.Texture;
 
 public class GraphicAssetDTO {
 
-    private string id;
+    private String id;
     private Texture texture;
 
-    public GraphicAssetDTO(string id, Texture texture) {
+    public GraphicAssetDTO(String id, Texture texture) {
         this.id = id;
         this.texture = texture;
     }
 
-    public string getId() {
+    public String getId() {
         return id;
     }
 
