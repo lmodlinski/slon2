@@ -7,27 +7,27 @@ import java.util.*;
 /**
  * Created by Marcel on 2017-09-23.
  */
-interface  Listener{
+interface  PotListener{
     void onGameObjectDrop(GameObject obj);
 }
 
-public class Container extends GameObject {
+public class Pot extends GameObject {
 
     private GraphicAsset inGameImage;
     private GraphicAsset cookingImages;
     private String bulgingSoundFX;
 
-    private List<Listener> listenerList = new ArrayList<Listener>();
+    private List<PotListener> listenerList = new ArrayList<PotListener>();
 
-    public void addListener(Listener toAdd) {
+    public void addListener(PotListener toAdd) {
         listenerList.add(toAdd);
     }
 
     public void onObjectDrop(GameObject obj) {
-        for (Listener listener : listenerList)
+        for (PotListener listener : listenerList)
             listener.onGameObjectDrop(obj);
     }
-    public Container(String id, String name, GraphicAsset image, String positionGroup, GraphicAsset CookingImages, GraphicAsset InGameImage, String BulgingSoundFX){
+    public Pot(String id, String name, GraphicAsset image, String positionGroup, GraphicAsset CookingImages, GraphicAsset InGameImage, String BulgingSoundFX){
         super(id, name, image, positionGroup);
         this.cookingImages = CookingImages;
         this.inGameImage = InGameImage;
@@ -35,7 +35,7 @@ public class Container extends GameObject {
         this.bulgingSoundFX = BulgingSoundFX;
     }
 
-    public String getInGameImage()
+    public GraphicAsset getInGameImage()
     {
         return inGameImage;
     }
@@ -43,7 +43,7 @@ public class Container extends GameObject {
     {
         return cookingImages;
     }
-    public GraphicAsset getBulgingSoundFX()
+    public String getBulgingSoundFX()
     {
         return bulgingSoundFX;
     }
