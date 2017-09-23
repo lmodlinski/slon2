@@ -1,5 +1,8 @@
 package com.psychogra.slon2.models;
 
+import com.psychogra.slon2.BundleManagement.GraphicAssetDTO;
+import com.psychogra.slon2.models.rules.Rule;
+
 import java.util.ArrayList;
 
 /**
@@ -8,22 +11,21 @@ import java.util.ArrayList;
 
 public class Recipe extends GameObject
 {
-	protected String resultImage;
+	protected GraphicAssetDTO resultImage;
 
 	protected ArrayList<Ingredient> ingredients;
 
 	protected ArrayList<Rule> rules;
 
-	public Recipe(String id, String name, String image, String positionGroup, String resultImage, ArrayList<Ingredient> ingredients, ArrayList<Rule> rules)
+	public Recipe(String id, String name, GraphicAssetDTO image, String positionGroup, GraphicAssetDTO resultImage, ArrayList<Ingredient> ingredients, ArrayList<Rule> rules)
 	{
 		super(id, name, image, positionGroup);
-
 		this.resultImage = resultImage;
 		this.ingredients = ingredients;
 		this.rules = rules;
 	}
 
-	public String getResultImage()
+	public GraphicAssetDTO getResultImage()
 	{
 		return resultImage;
 	}
