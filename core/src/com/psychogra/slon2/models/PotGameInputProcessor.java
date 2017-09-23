@@ -1,9 +1,9 @@
 package com.psychogra.slon2.models;
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.gui.Drag;
-import com.psychogra.slon2.models.game.*;
-import com.psychogra.slon2.models.interfaces.CollisionInterface;
+import com.psychogra.slon2.models.game.PotGame;
 import com.psychogra.slon2.models.pot.Ingredient;
 
 /**
@@ -18,9 +18,9 @@ public class PotGameInputProcessor  {
 
             @Override
             public boolean touchDown (int x, int y, int pointer, int button) {
-                drag = new Drag(10f, new Vector2(x,y));
+                drag = new Drag(100.0f, new Vector2(x,y));
                 Ingredient held = gra.closest(drag);
-                if( held != null){
+                if(held != null){
                     drag.setGameObject(held);
                 }
                 return true;

@@ -8,31 +8,38 @@ import com.psychogra.slon2.models.interfaces.CollisionInterface;
  * Created by Marcel on 2017-09-23.
  */
 
-public class Drag implements CollisionInterface {
-    private float radius;
-    private Vector2 position;
-    private GameObject object;
-    public Drag(float radius, Vector2 position) {
-        this.radius = radius;
-        this.position = position;
-    }
+public class Drag implements CollisionInterface
+{
+	private float radius;
+	private Vector2 position;
+	private GameObject object;
 
-    public void setGameObject(GameObject obj){
-        object = obj;
-    }
+	public Drag(float radius, Vector2 position)
+	{
+		this.radius = radius;
+		this.position = position;
+	}
 
-    @Override
-    public float getRadius() {
-        return 0;
-    }
+	public void setGameObject(GameObject obj)
+	{
+		this.object = obj;
+	}
 
-    @Override
-    public Vector2 getPosition() {
-        return null;
-    }
+	@Override
+	public float getRadius()
+	{
+		return this.radius;
+	}
 
-    @Override
-    public boolean collisionWith(CollisionInterface collidable) {
-        return false;
-    }
+	@Override
+	public Vector2 getPosition()
+	{
+		return this.position;
+	}
+
+	@Override
+	public boolean collisionWith(CollisionInterface collidable)
+	{
+		return this.getPosition().dst(collidable.getPosition()) <= this.getRadius() + collidable.getRadius();
+	}
 }

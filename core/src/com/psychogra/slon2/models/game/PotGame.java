@@ -30,8 +30,9 @@ public class PotGame extends Game
 
 		this.dish = dish;
 		this.pot = pot;
-		input = new PotGameInputProcessor();
-		input.initInputInGame(this);
+
+		this.input = new PotGameInputProcessor();
+		this.input.initInputInGame(this);
 	}
 
 	@Override
