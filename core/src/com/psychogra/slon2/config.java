@@ -8,7 +8,7 @@ public class config {
     private static float width;
     private static float height;
 
-    public static void setRatio(float newWidth,float newHeight){
+    public static void setSize(float newWidth,float newHeight){
         width  = newWidth;
         height = newHeight;
     }

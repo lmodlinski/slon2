@@ -26,7 +26,7 @@ public class SlonMain extends ApplicationAdapter {
 	@Override
 	public void create () {
 
-        config.setRatio(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        config.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
         GraphicAsset asset = new GraphicAsset("objekt",new Texture("badlogic.jpg"));
 		batch = new SpriteBatch();
