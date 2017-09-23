@@ -32,6 +32,18 @@
                     </gameObject>
                 </gameObjects>
             </scene>
+            <dishes>
+                <dish>
+                    <id>0</id>
+                    <name>sałatka z pasztetu</name>
+                    <recip>
+                        <indegriend>1</indegriend>
+                    </recip>
+                    <table>
+                        <indegriend>2</indegriend>
+                    </table>
+                </dish>
+            </dishes>
         </game>
     </games>
     <graphicAssets>

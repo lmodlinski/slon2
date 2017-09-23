@@ -6,12 +6,16 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader;
+import com.psychogra.slon2.models.pot.Dish;
+import com.sun.org.apache.xpath.internal.functions.Function;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BundleManager {
@@ -109,6 +113,15 @@ public class BundleManager {
 
     private PotGameDTO getPotGame(XmlReader.Element element){
         PotGameDTO game = new PotGameDTO();
+        game.dishes = (DishDTO[]) getList(element.getChildByName("dishes"), new IConverter<DishDTO>() {
+            @Override
+            public DishDTO convert(XmlReader.Element element) {
+                DishDTO dish = new DishDTO();
+                dish.id = element.getAttribute("id");
+                dish.name = element.getAttribute("name");
+                return dish;
+            }
+        }).toArray();
         return game;
     }
 
@@ -161,5 +174,15 @@ public class BundleManager {
         }
         gameObject.extraAttributes = attributes;
         return gameObject;
+    }
+
+    private <T> ArrayList<T> getList(XmlReader.Element element, IConverter<T> converter){
+        int len = element.getChildCount();
+        ArrayList<T> list = new ArrayList<T>(len);
+
+        for(int i = 0; i < len; i++){
+            list.add(converter.convert(element.getChild(i)));
+        }
+        return list;
     }
 }
