@@ -27,9 +27,14 @@ public class Table extends GameObject
 	{
 		super.render(batch);
 
-		for (Ingredient ingredient : this.ingredients) {
+		for (Ingredient ingredient : this.getIngredients()) {
 			ingredient.render(batch);
 		}
+	}
+
+	public void drop(Ingredient ingredient)
+	{
+		this.getIngredients().remove(ingredient);
 	}
 
 	public ArrayList<Ingredient> getIngredients()

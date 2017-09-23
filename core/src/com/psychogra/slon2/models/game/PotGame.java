@@ -60,14 +60,17 @@ public class PotGame extends Game
 
 	public boolean drop(Ingredient ingredient)
 	{
-		ArrayList<Ingredient> copy = new ArrayList<Ingredient>(this.getProgress());
-		copy.add(ingredient);
+		if (ingredient.collisionWith(this.getPot())) {
+			ArrayList<Ingredient> copy = new ArrayList<Ingredient>(this.getProgress());
+			copy.add(ingredient);
 
-		if (this.getDish().getRecipe().isValid(copy)) {
-			this.getProgress().add(ingredient);
-			this.invalidate();
+			if (this.getDish().getRecipe().isValid(copy)) {
+				this.getProgress().add(ingredient);
+				this.getDish().getTable().drop(ingredient);
+				this.invalidate();
 
-			return true;
+				return true;
+			}
 		}
 
 		return false;
