@@ -11,9 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class BundleManager {
@@ -23,11 +21,6 @@ public class BundleManager {
 
     private BundleManager(String path){
         this.path = path;
-    }
-
-    public static void main(String[] args) throws Exception{
-
-        deserializeBundle("bundle");
     }
 
     public static BundleDTO deserializeBundle(String path){
@@ -70,7 +63,7 @@ public class BundleManager {
         for(int i = 0; i < element.getChildCount(); i++){
             XmlReader.Element asset = element.getChild(i);
             String id = asset.getAttribute("id");
-            Texture texture = new Texture(Gdx.files.getFileHandle(path + "/" + asset.getAttribute("path"), Files.FileType.External));
+            Texture texture = new Texture(Gdx.files.getFileHandle(path + "/" + asset.getAttribute("path"), Files.FileType.Internal));
             float x = Float.parseFloat(asset.getAttribute("x"));
             float y = Float.parseFloat(asset.getAttribute("y"));
             map.put(id, new GraphicAsset(id, texture, new Vector2(x, y)));
@@ -84,7 +77,7 @@ public class BundleManager {
         for(int i = 0; i < element.getChildCount(); i++){
             XmlReader.Element asset = element.getChild(i);
             String id = asset.getAttribute("id");
-            Sound sound = Gdx.audio.newSound(Gdx.files.getFileHandle(path + "/" + asset.getAttribute("path"), Files.FileType.External));
+            Sound sound = Gdx.audio.newSound(Gdx.files.getFileHandle(path + "/" + asset.getAttribute("path"), Files.FileType.Internal));
             map.put(id, new AudioAsset(id, sound));
         }
         return map;

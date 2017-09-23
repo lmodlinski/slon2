@@ -1,6 +1,7 @@
 package com.psychogra.slon2;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -29,7 +30,8 @@ public class SlonMain extends ApplicationAdapter {
 
         config.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        GraphicAsset asset = new GraphicAsset("objekt",new Texture("badlogic.jpg"));
+		Texture tex = new Texture(Gdx.files.getFileHandle("bundle" + "/" + "bg.png", Files.FileType.Internal));
+        GraphicAsset asset = new GraphicAsset("objekt",tex, new Vector2(0, 0));
 		batch = new SpriteBatch();
         Obj = new Ingredient("id","salata",asset,new Vector2(500,500),asset,asset,"droping","draging",50f);
         ArrayList<Ingredient> list = new ArrayList<Ingredient>();
