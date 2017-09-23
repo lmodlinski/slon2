@@ -1,35 +1,36 @@
 package com.psychogra.slon2.models;
 
+import com.psychogra.slon2.BundleManagement.GraphicAssetDTO;
+
 /**
  * Created by lmodlinski on 23/09/2017.
  */
 
 public class Ingredient extends GameObject
 {
-	private String inGameImage;
+	private GraphicAssetDTO inGameImage;
 
-	private String droppedImage;
+	private GraphicAssetDTO droppedImage;
 
 	private String droppingSound;
 
 	private String draggingSound;
 
-	public Ingredient(String id, String name, String image, String positionGroup, String inGameImage, String droppedImage, String droppingSound, String draggingSound)
+	public Ingredient(String id, String name, GraphicAssetDTO image, String positionGroup, GraphicAssetDTO inGameImage, GraphicAssetDTO droppedImage, String droppingSound, String draggingSound)
 	{
 		super(id, name, image, positionGroup);
-
 		this.inGameImage = inGameImage;
 		this.droppedImage = droppedImage;
 		this.droppingSound = droppingSound;
 		this.draggingSound = draggingSound;
 	}
 
-	public String getInGameImage()
+	public GraphicAssetDTO getInGameImage()
 	{
 		return inGameImage;
 	}
 
-	public String getDroppedImage()
+	public GraphicAssetDTO getDroppedImage()
 	{
 		return droppedImage;
 	}
