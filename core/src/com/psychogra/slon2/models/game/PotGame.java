@@ -1,6 +1,5 @@
 package com.psychogra.slon2.models.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.PotGameInputProcessor;
@@ -8,6 +7,8 @@ import com.psychogra.slon2.models.interfaces.CollisionInterface;
 import com.psychogra.slon2.models.pot.Dish;
 import com.psychogra.slon2.models.pot.Ingredient;
 import com.psychogra.slon2.models.pot.Pot;
+import com.psychogra.slon2.models.pot.Recipe;
+import com.psychogra.slon2.models.pot.Table;
 
 import java.util.ArrayList;
 
@@ -55,10 +56,48 @@ public class PotGame extends Game
 	{
 		super.render(batch);
 
-		this.dish.render(batch);
+		Dish dish = this.getDish();
+		Table table = dish.getTable();
+
+		batch.draw(
+				table.getImage().getTexture(),
+				table.getCenteredPosition().x,
+				table.getCenteredPosition().y
+		);
+
 		this.pot.render(batch);
-		if(result == Result.SUCCESS){
-			Gdx.app.exit();
+
+		for (Ingredient ingredient : this.getDish().getTable().getIngredients()) {
+			batch.draw(
+					ingredient.getImage().getTexture(),
+					ingredient.getCenteredPosition().x,
+					ingredient.getCenteredPosition().y
+			);
+		}
+
+		Recipe recipe = dish.getRecipe();
+		batch.draw(
+				recipe.getImage().getTexture(),
+				recipe.getCenteredPosition().x,
+				recipe.getCenteredPosition().y
+		);
+
+		for (Ingredient ingredient : this.getDish().getRecipe().getIngredients()) {
+			if (-1 == this.getProgress().indexOf(ingredient)) {
+				batch.draw(
+						ingredient.getImage().getTexture(),
+						ingredient.getCenteredPosition().x,
+						ingredient.getCenteredPosition().y
+				);
+			}
+		}
+
+		if (this.getResult() == Result.SUCCESS) {
+			batch.draw(
+					dish.getImage().getTexture(),
+					dish.getCenteredPosition().x,
+					dish.getCenteredPosition().y
+			);
 		}
 	}
 
@@ -86,7 +125,7 @@ public class PotGame extends Game
 
 		for (Ingredient ingredient : this.getDish().getTable().getIngredients()) {
 			if (drag.collisionWith(ingredient)) {
-				if (null != closest && drag.getPosition().dst(ingredient.getPosition()) < closest.getPosition().dst(ingredient.getPosition())) {
+				if (null != closest && drag.getPosition().dst(ingredient.getCenteredPosition()) < closest.getCenteredPosition().dst(ingredient.getCenteredPosition())) {
 					continue;
 				}
 

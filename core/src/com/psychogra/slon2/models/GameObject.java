@@ -27,9 +27,31 @@ public class GameObject implements RenderableInterface
 	}
 
 	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		GameObject that = (GameObject) o;
+
+		return id.equals(that.id);
+
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return id.hashCode();
+	}
+
+	@Override
 	public void render(SpriteBatch batch)
 	{
-		batch.draw(this.getImage().getTexture(), this.getPosition().x, this.getPosition().y);
+		batch.draw(this.getImage().getTexture(), this.getCenteredPosition().x, this.getCenteredPosition().y);
 	}
 
 	public String getId()
@@ -55,5 +77,13 @@ public class GameObject implements RenderableInterface
 	public Vector2 getPosition()
 	{
 		return position;
+	}
+
+	public Vector2 getCenteredPosition()
+	{
+		return new Vector2(
+				this.getPosition().x - this.getImage().getTexture().getWidth() * 0.5f,
+				this.getPosition().y - this.getImage().getTexture().getHeight() * 0.5f
+		);
 	}
 }
