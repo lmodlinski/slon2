@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
-import com.psychogra.slon2.models.GameObject;
 import com.psychogra.slon2.models.game.PotGame;
 import com.psychogra.slon2.models.pot.Dish;
 import com.psychogra.slon2.models.pot.Ingredient;

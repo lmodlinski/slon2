@@ -2,6 +2,7 @@ package com.psychogra.slon2.models.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
+import com.psychogra.slon2.models.interfaces.CollisionInterface;
 import com.psychogra.slon2.models.pot.Dish;
 import com.psychogra.slon2.models.pot.Ingredient;
 import com.psychogra.slon2.models.pot.Pot;
@@ -38,7 +39,7 @@ public class PotGame extends Game
 	public void render(SpriteBatch batch)
 	{
 		super.render(batch);
-		
+
 		this.dish.render(batch);
 		this.pot.render(batch);
 	}
@@ -46,6 +47,23 @@ public class PotGame extends Game
 	public void drop(Ingredient ingredient)
 	{
 
+	}
+
+	public Ingredient closest(CollisionInterface drag)
+	{
+		Ingredient closest = null;
+		
+		for (Ingredient ingredient : this.getDish().getTable().getIngredients()) {
+			if (drag.collisionWith(ingredient)) {
+				if (null != closest && drag.getPosition().dst(ingredient.getPosition()) < closest.getPosition().dst(ingredient.getPosition())) {
+					continue;
+				}
+
+				closest = ingredient;
+			}
+		}
+
+		return closest;
 	}
 
 	public Dish getDish()
