@@ -1,9 +1,9 @@
 package com.psychogra.slon2.models.game;
 
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
-import com.psychogra.slon2.models.Ingredient;
-import com.psychogra.slon2.models.Pot;
-import com.psychogra.slon2.models.Recipe;
+import com.psychogra.slon2.models.pot.Ingredient;
+import com.psychogra.slon2.models.pot.Pot;
+import com.psychogra.slon2.models.pot.Recipe;
 
 import java.util.ArrayList;
 

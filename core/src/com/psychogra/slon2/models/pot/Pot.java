@@ -1,7 +1,7 @@
-package com.psychogra.slon2.models;
+package com.psychogra.slon2.models.pot;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
+import com.psychogra.slon2.models.GameObject;
 
-import java.awt.Graphics;
 import java.util.*;
 
 /**
@@ -11,7 +11,8 @@ interface  PotListener{
     void onGameObjectDrop(GameObject obj);
 }
 
-public class Pot extends GameObject {
+public class Pot extends GameObject
+{
 
     private GraphicAsset inGameImage;
     private GraphicAsset cookingImages;

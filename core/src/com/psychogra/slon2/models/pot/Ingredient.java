@@ -1,6 +1,7 @@
-package com.psychogra.slon2.models;
+package com.psychogra.slon2.models.pot;
 
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
+import com.psychogra.slon2.models.GameObject;
 
 /**
  * Created by lmodlinski on 23/09/2017.
