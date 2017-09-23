@@ -2,12 +2,12 @@ package com.psychogra.slon2.BundleManagement;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class GraphicAssetDTO {
+public class GraphicAsset {
 
     private String id;
     private Texture texture;
 
-    public GraphicAssetDTO(String id, Texture texture) {
+    public GraphicAsset(String id, Texture texture) {
         this.id = id;
         this.texture = texture;
     }
