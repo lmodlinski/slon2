@@ -23,19 +23,26 @@ public class PotGameInputProcessor  {
                 Ingredient held = gra.closest(drag);
                 if(held != null){
                     drag.setGameObject(held);
+
                 }
                 return true;
             }
 
             @Override
             public boolean touchUp (int x, int y, int pointer, int button) {
-                drag.releaseGameObject();
+                if(drag.getGameObject() != null) {
+                    boolean droppedIt = gra.drop(drag.getGameObject());
+                    if (!droppedIt) {
+                        drag.getGameObject().setPosition(drag.getPosition());
+                    }
+                    drag.releaseGameObject();
 
+                }
                 return true;
             }
             @Override
             public boolean touchDragged (int x, int y, int pointer) {
-                drag.setPosition(new Vector2(x, config.height - y));
+
                 if(drag.getGameObject() != null){
                     GameObject object = drag.getGameObject();
                     object.setPosition(new Vector2(x, config.height - y));

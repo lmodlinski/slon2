@@ -1,5 +1,6 @@
 package com.psychogra.slon2.models.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.PotGameInputProcessor;
@@ -56,6 +57,9 @@ public class PotGame extends Game
 
 		this.dish.render(batch);
 		this.pot.render(batch);
+		if(result == Result.SUCCESS){
+			Gdx.app.exit();
+		}
 	}
 
 	public boolean drop(Ingredient ingredient)
