@@ -1,4 +1,6 @@
-package com.psychogra.slon2.models;
+package com.psychogra.slon2.models.rules;
+
+import com.psychogra.slon2.models.GameObject;
 
 import java.util.List;
 

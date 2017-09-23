@@ -1,5 +1,7 @@
 package com.psychogra.slon2.models;
 
+import com.psychogra.slon2.models.rules.Rule;
+
 import java.util.ArrayList;
 
 /**
