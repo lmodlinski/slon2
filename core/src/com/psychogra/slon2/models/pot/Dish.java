@@ -1,5 +1,6 @@
 package com.psychogra.slon2.models.pot;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.GameObject;
@@ -14,15 +15,19 @@ public class Dish extends GameObject
 
 	protected Table table;
 
-	protected GraphicAsset resultImage;
-
-	public Dish(String id, String name, GraphicAsset image, Vector2 positionGroup, Recipe recipe, Table table, GraphicAsset resultImage)
+	public Dish(String id, String name, GraphicAsset image, Vector2 positionGroup, Recipe recipe, Table table)
 	{
 		super(id, name, image, positionGroup);
 
 		this.recipe = recipe;
 		this.table = table;
-		this.resultImage = resultImage;
+	}
+
+	@Override
+	public void render(SpriteBatch batch)
+	{
+		this.table.render(batch);
+		this.recipe.render(batch);
 	}
 
 	public Recipe getRecipe()
@@ -33,10 +38,5 @@ public class Dish extends GameObject
 	public Table getTable()
 	{
 		return table;
-	}
-
-	public GraphicAsset getResultImage()
-	{
-		return resultImage;
 	}
 }

@@ -17,7 +17,6 @@ interface PotListener
 
 public class Pot extends GameObject implements CollisionInterface
 {
-	private GraphicAsset inGameImage;
 	private GraphicAsset cookingImages;
 	private String bulgingSoundFX;
 	private float radius;
@@ -36,19 +35,13 @@ public class Pot extends GameObject implements CollisionInterface
 		}
 	}
 
-	public Pot(String id, String name, GraphicAsset image, Vector2 positionGroup, GraphicAsset inGameImage, GraphicAsset cookingImages, String bulgingSoundFX, float radius, List<PotListener> listenerList)
+	public Pot(String id, String name, GraphicAsset image, Vector2 positionGroup, GraphicAsset cookingImages, String bulgingSoundFX, float radius, List<PotListener> listenerList)
 	{
 		super(id, name, image, positionGroup);
-		this.inGameImage = inGameImage;
 		this.cookingImages = cookingImages;
 		this.bulgingSoundFX = bulgingSoundFX;
 		this.radius = radius;
 		this.listenerList = listenerList;
-	}
-
-	public GraphicAsset getInGameImage()
-	{
-		return inGameImage;
 	}
 
 	public GraphicAsset getCookingImage()

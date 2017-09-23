@@ -33,6 +33,11 @@ public class PotGame extends Game
 		this.progress = new ArrayList<Ingredient>();
 	}
 
+	public void drop(Ingredient ingredient)
+	{
+
+	}
+
 	public Recipe getRecipe()
 	{
 		return recipe;

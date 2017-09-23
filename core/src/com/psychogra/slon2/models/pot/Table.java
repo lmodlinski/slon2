@@ -1,5 +1,6 @@
 package com.psychogra.slon2.models.pot;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.GameObject;
@@ -19,6 +20,16 @@ public class Table extends GameObject
 		super(id, name, image, positionGroup);
 
 		this.ingredients = ingredients;
+	}
+
+	@Override
+	public void render(SpriteBatch batch)
+	{
+		super.render(batch);
+
+		for (Ingredient ingredient : this.ingredients) {
+			ingredient.render(batch);
+		}
 	}
 
 	public ArrayList<Ingredient> getIngredients()
