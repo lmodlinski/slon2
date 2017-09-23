@@ -32,4 +32,19 @@ public class PotGame extends Game
 	{
 		this.progress = new ArrayList<Ingredient>();
 	}
+
+	public Recipe getRecipe()
+	{
+		return recipe;
+	}
+
+	public Pot getPot()
+	{
+		return pot;
+	}
+
+	public ArrayList<Ingredient> getProgress()
+	{
+		return progress;
+	}
 }

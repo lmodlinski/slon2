@@ -1,11 +1,12 @@
 package com.psychogra.slon2.models;
 
+import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 
 /**
  * Created by lmodlinski on 23/09/2017.
  */
-public abstract class GameObject
+public class GameObject
 {
 	private String id;
 
@@ -13,14 +14,14 @@ public abstract class GameObject
 
 	private GraphicAsset image;
 
-	private String positionGroup;
+	private Vector2 position;
 
-	public GameObject(String id, String name, GraphicAsset image, String positionGroup)
+	public GameObject(String id, String name, GraphicAsset image, Vector2 position)
 	{
 		this.id = id;
 		this.name = name;
 		this.image = image;
-		this.positionGroup = positionGroup;
+		this.position = position;
 	}
 
 	public String getId()
@@ -38,8 +39,13 @@ public abstract class GameObject
 		return image;
 	}
 
-	public String getPositionGroup()
+	public void setPosition(Vector2 position)
 	{
-		return positionGroup;
+		this.position = position;
+	}
+
+	public Vector2 getPosition()
+	{
+		return position;
 	}
 }

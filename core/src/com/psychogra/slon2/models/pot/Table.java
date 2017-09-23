@@ -1,5 +1,6 @@
 package com.psychogra.slon2.models.pot;
 
+import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.GameObject;
 
@@ -13,7 +14,7 @@ public class Table extends GameObject
 {
 	protected ArrayList<Ingredient> ingredients;
 
-	public Table(String id, String name, GraphicAsset image, String positionGroup, ArrayList<Ingredient> ingredients)
+	public Table(String id, String name, GraphicAsset image, Vector2 positionGroup, ArrayList<Ingredient> ingredients)
 	{
 		super(id, name, image, positionGroup);
 

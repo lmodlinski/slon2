@@ -1,5 +1,6 @@
 package com.psychogra.slon2.models.pot;
 
+import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.GameObject;
 
@@ -15,10 +16,10 @@ public class Dish extends GameObject
 
 	protected GraphicAsset resultImage;
 
-	public Dish(String id, String name, GraphicAsset image, String positionGroup, Recipe recipe, Table table, GraphicAsset resultImage)
+	public Dish(String id, String name, GraphicAsset image, Vector2 positionGroup, Recipe recipe, Table table, GraphicAsset resultImage)
 	{
 		super(id, name, image, positionGroup);
-		
+
 		this.recipe = recipe;
 		this.table = table;
 		this.resultImage = resultImage;
