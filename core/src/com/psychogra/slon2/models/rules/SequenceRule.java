@@ -1,7 +1,5 @@
 package com.psychogra.slon2.models.rules;
 
-import com.psychogra.slon2.models.GameObject;
-
 import java.util.List;
 
 /**
@@ -11,16 +9,26 @@ import java.util.List;
 public class SequenceRule extends Rule
 {
 	@Override
-	public boolean isFullfilled(List<GameObject> model, List<GameObject> progress)
+	public boolean isValid(List model, List progress)
 	{
-		if (model.size() == progress.size()) {
-			for (int i = 0, size = model.size(); i < size; i++) {
-				if (!model.get(i).equals(progress.get(i))) {
+		if (model.size() >= progress.size()) {
+			for (int i = 0, size = progress.size(); i < size; i++) {
+				if (!progress.get(i).equals(model.get(i))) {
 					return false;
 				}
 			}
 
 			return true;
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean isFulfilled(List model, List progress)
+	{
+		if (model.size() == progress.size()) {
+			return this.isValid(model, progress);
 		}
 
 		return false;
