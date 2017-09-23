@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+    <name>Tove</name>
+    <games>
+        <game>
+            <type>PotGame</type>
+            <name>moja gra</name>
+            <background>13231231</background>
+            <audio>123132313</audio>
+        </game>
+    </games>
+    <graphicAssets>
+        <graphicAsset>
+            <id>zwloki</id>
+            <path>abc/x.png</path>
+        </graphicAsset>
+    </graphicAssets>
+    <audioAssets>
+        <audioAsset>
+            <id>zarzynanie</id>
+            <path>x/y.mp3</path>
+        </audioAsset>
+    </audioAssets>
+</bundle>
