@@ -1,7 +1,5 @@
 package com.psychogra.slon2.models.rules;
 
-import com.psychogra.slon2.models.GameObject;
-
 import java.util.List;
 
 /**
@@ -10,5 +8,7 @@ import java.util.List;
 
 abstract public class Rule
 {
-	public abstract boolean isFullfilled(List<GameObject> model, List<GameObject> progress);
+	public abstract boolean isValid(List model, List progress);
+
+	public abstract boolean isFulfilled(List model, List progress);
 }

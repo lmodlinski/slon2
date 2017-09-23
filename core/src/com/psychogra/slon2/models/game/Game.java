@@ -26,6 +26,8 @@ abstract public class Game implements RenderableInterface
 
 	public abstract void run();
 
+	public abstract void invalidate();
+
 	@Override
 	public void render(SpriteBatch batch)
 	{

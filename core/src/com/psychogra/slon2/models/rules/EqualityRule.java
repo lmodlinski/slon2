@@ -12,13 +12,13 @@ import java.util.List;
 public class EqualityRule extends Rule
 {
 	@Override
-	public boolean isFullfilled(List<GameObject> model, List<GameObject> progress)
+	public boolean isValid(List model, List progress)
 	{
-		if (model.size() == progress.size()) {
-			List<GameObject> copy = new ArrayList<GameObject>(progress);
+		if (model.size() >= progress.size()) {
+			List<GameObject> copy = new ArrayList<GameObject>(model);
 			int copy_index = -1;
 
-			for (int i = 0, size = model.size(); i < size; i++) {
+			for (int i = 0, size = progress.size(); i < size; i++) {
 				if (-1 == (copy_index = copy.indexOf(model.get(i)))) {
 					return false;
 				}
@@ -27,6 +27,16 @@ public class EqualityRule extends Rule
 			}
 
 			return true;
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean isFulfilled(List model, List progress)
+	{
+		if (model.size() == progress.size()) {
+			return this.isValid(model, progress);
 		}
 
 		return false;
