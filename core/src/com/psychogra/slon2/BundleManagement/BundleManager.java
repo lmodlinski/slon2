@@ -4,6 +4,7 @@ import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.XmlReader;
 
 import java.io.FileInputStream;
@@ -13,6 +14,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BundleManager {
 
@@ -57,6 +59,8 @@ public class BundleManager {
         bundle.graphicAssetMap = getGraphicAssets(element.getChildByName("graphicAssets"));
         bundle.audioAssetMap = getAudioAssets(element.getChildByName("audioAssets"));
 
+        bundle.games = getGames(element.getChildByName("games"));
+
         return bundle;
     }
 
@@ -67,7 +71,9 @@ public class BundleManager {
             XmlReader.Element asset = element.getChild(i);
             String id = asset.getAttribute("id");
             Texture texture = new Texture(Gdx.files.getFileHandle(path + "/" + asset.getAttribute("path"), Files.FileType.External));
-            map.put(id, new GraphicAsset(id, texture));
+            float x = Float.parseFloat(asset.getAttribute("x"));
+            float y = Float.parseFloat(asset.getAttribute("y"));
+            map.put(id, new GraphicAsset(id, texture, new Vector2(x, y)));
         }
         return map;
     }
@@ -103,6 +109,7 @@ public class BundleManager {
             g.name = game.getAttribute("name");
             g.background = bundle.graphicAssetMap.get(game.getAttribute("background"));
             g.audio = bundle.audioAssetMap.get(game.getAttribute("audio"));
+            g.scene = getScene(game.getChildByName("scene"));
         }
         return games;
     }
@@ -110,5 +117,56 @@ public class BundleManager {
     private PotGameDTO getPotGame(XmlReader.Element element){
         PotGameDTO game = new PotGameDTO();
         return game;
+    }
+
+    private SceneDTO getScene(XmlReader.Element element){
+        SceneDTO scene = new SceneDTO();
+        scene.id = element.getAttribute("id");
+
+        scene.positions = getPositions(element.getChildByName("positions"));
+        scene.gameObjects = getGameObjects(element.getChildByName("gameObjects"));
+
+        return scene;
+    }
+
+    private PositionDTO[] getPositions(XmlReader.Element element){
+        int len = element.getChildCount();
+        PositionDTO[] positions = new PositionDTO[len];
+        for(int i = 0; i < len; i++){
+            XmlReader.Element pos = element.getChild(i);
+            PositionDTO position = new PositionDTO();
+            position.tag = pos.getAttribute("tag");
+            float x = Float.parseFloat(pos.getAttribute("x"));
+            float y = Float.parseFloat(pos.getAttribute("y"));
+            position.position = new Vector2(x, y);
+            positions[i] = position;
+        }
+        return positions;
+    }
+
+    private Map<String, GameObjectDTO> getGameObjects(XmlReader.Element element){
+        Map<String, GameObjectDTO> objects = new HashMap<String, GameObjectDTO>();
+        for(int i = 0; i < element.getChildCount(); i++){
+            GameObjectDTO gameObject = getGameObject(element.getChild(i));
+            objects.put(gameObject.id, gameObject);
+        }
+        return objects;
+    }
+
+    private GameObjectDTO getGameObject(XmlReader.Element element){
+        GameObjectDTO gameObject = new GameObjectDTO();
+        gameObject.id = element.getAttribute("id");
+        gameObject.name = element.getAttribute("name");
+        gameObject.type = element.getAttribute("type");
+        gameObject.image = bundle.graphicAssetMap.get(element.getAttribute("image"));
+        gameObject.positionGroup = element.getAttribute("positionGroup");
+        Map<String, String> attributes = new HashMap<String, String>();
+        XmlReader.Element extras = element.getChildByName("extraAttributes");
+        for(int i = 0; i < extras.getChildCount(); i++){
+            XmlReader.Element pair = extras.getChild(i);
+            attributes.put(pair.getAttribute("key"), pair.getAttribute("value"));
+        }
+        gameObject.extraAttributes = attributes;
+        return gameObject;
     }
 }

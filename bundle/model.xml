@@ -7,12 +7,39 @@
             <name>moja gra</name>
             <background>13231231</background>
             <audio>123132313</audio>
+            <scene>
+                <id>qwerty</id>
+                <positions>
+                    <position>
+                        <tag>background</tag>
+                        <x>24</x>
+                        <y>32</y>
+                    </position>
+                </positions>
+                <gameObjects>
+                    <gameObject>
+                        <id>id</id>
+                        <name>name</name>
+                        <type>type</type>
+                        <image>123</image>
+                        <positionGroup>xxx</positionGroup>
+                        <extraAttributes>
+                            <element>
+                                <key>key</key>
+                                <value>value</value>
+                            </element>
+                        </extraAttributes>
+                    </gameObject>
+                </gameObjects>
+            </scene>
         </game>
     </games>
     <graphicAssets>
         <graphicAsset>
             <id>zwloki</id>
             <path>abc/x.png</path>
+            <x>0.6</x>
+            <y>.2</y>
         </graphicAsset>
     </graphicAssets>
     <audioAssets>
