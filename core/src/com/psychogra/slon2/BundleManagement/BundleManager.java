@@ -9,7 +9,7 @@ public class BundleManager {
         System.out.println("DUPA");
     }
 
-    public static void DeserializeBundle(InputStream input){
+    public static void deserializeBundle(InputStream input){
 
         XMLDecoder decoder = new XMLDecoder(input);
         BundleDTO bundle = (BundleDTO) decoder.readObject();
