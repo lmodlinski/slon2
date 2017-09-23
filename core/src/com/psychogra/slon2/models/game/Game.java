@@ -12,5 +12,11 @@ abstract public class Game
 
 	protected String music;
 
+	public Game(GraphicAsset background, String music)
+	{
+		this.background = background;
+		this.music = music;
+	}
+
 	public abstract void run();
 }
