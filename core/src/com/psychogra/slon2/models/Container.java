@@ -1,6 +1,8 @@
-package com.psychogra.slon2;
+package com.psychogra.slon2.models;
+import com.psychogra.slon2.BundleManagement.GraphicAsset;
+
+import java.awt.Graphics;
 import java.util.*;
-import com.psychogra.slon2.models.GameObject;
 
 /**
  * Created by Marcel on 2017-09-23.
@@ -11,8 +13,8 @@ interface  Listener{
 
 public class Container extends GameObject {
 
-    private String inGameImage;
-    private String[] cookingImages;
+    private GraphicAsset inGameImage;
+    private GraphicAsset cookingImages;
     private String bulgingSoundFX;
 
     private List<Listener> listenerList = new ArrayList<Listener>();
@@ -25,9 +27,9 @@ public class Container extends GameObject {
         for (Listener listener : listenerList)
             listener.onGameObjectDrop(obj);
     }
-    public Container(String id, String name, String image, String positionGroup, String[] CookingImages, String InGameImage, String BulgingSoundFX){
+    public Container(String id, String name, GraphicAsset image, String positionGroup, GraphicAsset CookingImages, GraphicAsset InGameImage, String BulgingSoundFX){
         super(id, name, image, positionGroup);
-        this.cookingImages = CookingImages
+        this.cookingImages = CookingImages;
         this.inGameImage = InGameImage;
         this.cookingImages = CookingImages;
         this.bulgingSoundFX = BulgingSoundFX;
@@ -37,11 +39,11 @@ public class Container extends GameObject {
     {
         return inGameImage;
     }
-    public String[] getCookingImage()
+    public GraphicAsset getCookingImage()
     {
         return cookingImages;
     }
-    public String getBulgingSoundFX()
+    public GraphicAsset getBulgingSoundFX()
     {
         return bulgingSoundFX;
     }
