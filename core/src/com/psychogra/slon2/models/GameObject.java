@@ -5,7 +5,6 @@ import com.psychogra.slon2.BundleManagement.GraphicAssetDTO;
 /**
  * Created by lmodlinski on 23/09/2017.
  */
-
 public abstract class GameObject
 {
 	private String id;
