@@ -14,6 +14,11 @@ public class GraphicAsset {
         this.texture = texture;
         this.normalizedSize = normalizedSize;
     }
+    public GraphicAsset(String id, Texture texture) {
+        this.id = id;
+        this.texture = texture;
+        this.normalizedSize = new Vector2(0,0);
+    }
 
     public String getId() {
         return id;

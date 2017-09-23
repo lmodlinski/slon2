@@ -2,6 +2,7 @@ package com.psychogra.slon2.models.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
+import com.psychogra.slon2.models.PotGameInputProcessor;
 import com.psychogra.slon2.models.interfaces.CollisionInterface;
 import com.psychogra.slon2.models.pot.Dish;
 import com.psychogra.slon2.models.pot.Ingredient;
@@ -21,12 +22,16 @@ public class PotGame extends Game
 
 	protected ArrayList<Ingredient> progress;
 
+	private PotGameInputProcessor input;
+
 	public PotGame(GraphicAsset background, String music, Dish dish, Pot pot)
 	{
 		super(background, music);
 
 		this.dish = dish;
 		this.pot = pot;
+		input = new PotGameInputProcessor();
+		input.initInputInGame(this);
 	}
 
 	@Override
