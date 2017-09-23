@@ -36,6 +36,28 @@ public class Recipe extends GameObject
 		}
 	}
 
+	public boolean isValid(ArrayList<Ingredient> progress)
+	{
+		for (Rule rule : this.getRules()) {
+			if (!rule.isValid(this.getIngredients(), progress)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public boolean isFulfilled(ArrayList<Ingredient> progress)
+	{
+		for (Rule rule : this.getRules()) {
+			if (!rule.isFulfilled(this.getIngredients(), progress)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	public ArrayList<Ingredient> getIngredients()
 	{
 		return ingredients;

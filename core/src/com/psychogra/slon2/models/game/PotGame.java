@@ -36,6 +36,14 @@ public class PotGame extends Game
 	}
 
 	@Override
+	public void invalidate()
+	{
+		if (this.getDish().getRecipe().isFulfilled(this.getProgress())) {
+			this.result = Result.SUCCESS;
+		}
+	}
+
+	@Override
 	public void render(SpriteBatch batch)
 	{
 		super.render(batch);
@@ -44,15 +52,25 @@ public class PotGame extends Game
 		this.pot.render(batch);
 	}
 
-	public void drop(Ingredient ingredient)
+	public boolean drop(Ingredient ingredient)
 	{
+		ArrayList<Ingredient> copy = new ArrayList<Ingredient>(this.getProgress());
+		copy.add(ingredient);
 
+		if (this.getDish().getRecipe().isValid(copy)) {
+			this.getProgress().add(ingredient);
+			this.invalidate();
+
+			return true;
+		}
+
+		return false;
 	}
 
 	public Ingredient closest(CollisionInterface drag)
 	{
 		Ingredient closest = null;
-		
+
 		for (Ingredient ingredient : this.getDish().getTable().getIngredients()) {
 			if (drag.collisionWith(ingredient)) {
 				if (null != closest && drag.getPosition().dst(ingredient.getPosition()) < closest.getPosition().dst(ingredient.getPosition())) {

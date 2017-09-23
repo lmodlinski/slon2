@@ -9,4 +9,5 @@ public class BundleDTO {
     public Map<String, GraphicAsset> graphicAssetMap;
     public Map<String, AudioAsset> audioAssetMap;
 
+    public GameDTO[] games;
 }
