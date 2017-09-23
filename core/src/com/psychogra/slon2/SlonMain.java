@@ -30,20 +30,22 @@ public class SlonMain extends ApplicationAdapter {
 
 
         config.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        GraphicAsset stol = new GraphicAsset("objekt",new Texture("badlogic.jpg"));
+        GraphicAsset ingredient = new GraphicAsset("objekt",new Texture("ingredient.PNG"));
+        GraphicAsset pot = new GraphicAsset("pot",new Texture("pot.PNG"));
 
-        GraphicAsset asset = new GraphicAsset("objekt",new Texture("badlogic.jpg"));
 		batch = new SpriteBatch();
-        Obj = new Ingredient("id","salata",asset,new Vector2(10,10),asset,asset,"droping","draging",50f);
+        //Obj = new Ingredient("id","salata",ingredient,new Vector2(10,10),ingredient,ingredient,"droping","draging",50f);
         ArrayList<Ingredient> list = new ArrayList<Ingredient>();
-        list.add(Obj);
-        list.add(Obj);
-        list.add(Obj);
+        list.add(new Ingredient("id","salata",ingredient,new Vector2(100,10),ingredient,ingredient,"droping","draging",50f));
+        list.add(new Ingredient("id2","salata1",ingredient,new Vector2(10,100),ingredient,ingredient,"droping","draging",50f));
+        list.add(new Ingredient("id3","salata2",ingredient,new Vector2(10,10),ingredient,ingredient,"droping","draging",50f));
 
-        gra = new PotGame(asset,"asdasd",
-                new Dish("id","name",asset,new Vector2(0,0),
-                        new Recipe("id","name",asset,new Vector2(100,100),list,new ArrayList<Rule>()),
-                        new Table("id","name",asset,new Vector2(200,200),list)),
-                new Pot("id","name",asset,new Vector2(200,200),null,"bulging",3.7f));
+        gra = new PotGame(ingredient,"asdasd",
+                new Dish("id","name",ingredient,new Vector2(0,0),
+                        new Recipe("id","name",stol,new Vector2(100,100),list,new ArrayList<Rule>()),
+                        new Table("id","name",stol,new Vector2(200,200),list)),
+                new Pot("id","name",pot,new Vector2( config.width*0.5f , config.height*0.5f ),null,"bulging",3.7f));
 
 
 	}
