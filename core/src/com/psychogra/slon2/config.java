@@ -7,8 +7,8 @@ import com.badlogic.gdx.math.Vector2;
  */
 
 public class config {
-    private static float width;
-    private static float height;
+    public static float width;
+    public static float height;
 
     public static void setSize(float newWidth,float newHeight){
         width  = newWidth;

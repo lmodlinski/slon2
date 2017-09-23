@@ -19,6 +19,16 @@ public class Drag implements CollisionInterface
 		this.radius = radius;
 		this.position = position;
 	}
+	public void setPosition(Vector2 position)
+	{
+		this.position = position;
+	}
+	public void releaseGameObject(){
+		this.object = null;
+	}
+	public GameObject getGameObject(){
+		return this.object;
+	}
 
 	public void setGameObject(GameObject obj)
 	{
