@@ -43,7 +43,7 @@ public class LevelScreen implements Screen
 			SlonTemplates templates = new SlonTemplates();
 
 			GraphicAsset background = templates.getAsset("main_screen_background", "gui/Ekran_wyboru_poziomu.png");
-			GraphicAsset level1Asset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom.png");
+			GraphicAsset level1Asset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom2.png");
 			GraphicAsset level2Asset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom.png");
 			GraphicAsset otherLevelsAsset = templates.getAsset("main_screen_start_button", "gui/Nieaktywny_poziom.png");
 
