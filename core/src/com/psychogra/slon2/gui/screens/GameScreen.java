@@ -31,7 +31,7 @@ public class GameScreen implements Screen
 
 	private Game game;
 
-	public GameScreen(SlonMain main, Rule rule)
+	public GameScreen(SlonMain main, Rule rule, int index)
 	{
 		this.main = main;
 
@@ -44,7 +44,7 @@ public class GameScreen implements Screen
 		);
 
 		BundleDTO bundle = BundleManager.deserializeBundle("bundle");
-		this.game = (new GameFactory(bundle)).getGame(bundle.games[0]);
+		this.game = (new GameFactory(bundle)).getGame(bundle.games[index]);
 		((PotGame) this.game).getDish().getRecipe().getRules().add(rule);
 
 		//this.game = (new SlonTemplates()).getPopeGame();

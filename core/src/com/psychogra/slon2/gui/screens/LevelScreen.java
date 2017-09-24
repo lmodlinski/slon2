@@ -174,9 +174,9 @@ public class LevelScreen implements Screen
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 			{
                 if(event.getListenerActor().equals(level1)) {
-                    this.main.setScreen(new GameScreen(this.main,new EqualityRule()));
+                    this.main.setScreen(new GameScreen(this.main,new EqualityRule(), 0));
                 }else if(event.getListenerActor().equals(level2)) {
-                    this.main.setScreen(new GameScreen(this.main,new SequenceRule()));
+                    this.main.setScreen(new GameScreen(this.main,new SequenceRule(), 1));
                 }else {
 
                 }

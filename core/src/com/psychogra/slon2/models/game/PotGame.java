@@ -98,8 +98,8 @@ public class PotGame extends Game
 		Recipe recipe = dish.getRecipe();
 		batch.draw(
 				recipe.getImage().getTexture(),
-				recipe.getCenteredPosition().x,
-				recipe.getCenteredPosition().y
+				recipe.getPosition().x,
+				recipe.getPosition().y
 		);
 
 		this.renderRecipeIngredients(batch);
