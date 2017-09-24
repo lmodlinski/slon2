@@ -35,7 +35,8 @@
             <dishes>
                 <dish>
                     <id>0</id>
-                    <name>sałatka z pasztetu</name>
+                    <recipId>123</recipId>
+                    <tableId>213</tableId>
                     <recip>
                         <indegriend>1</indegriend>
                     </recip>
@@ -44,6 +45,7 @@
                     </table>
                 </dish>
             </dishes>
+            <potId>123</potId>
         </game>
     </games>
     <graphicAssets>

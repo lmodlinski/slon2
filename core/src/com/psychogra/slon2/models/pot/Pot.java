@@ -1,6 +1,7 @@
 package com.psychogra.slon2.models.pot;
 
 import com.badlogic.gdx.math.Vector2;
+import com.psychogra.slon2.BundleManagement.AudioAsset;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.GameObject;
 import com.psychogra.slon2.models.interfaces.CollisionInterface;
@@ -18,7 +19,7 @@ interface PotListener
 public class Pot extends GameObject implements CollisionInterface
 {
 	private GraphicAsset cookingImages;
-	private String bulgingSoundFX;
+	private AudioAsset bulgingSoundFX;
 	private float radius;
 
 	private List<PotListener> listenerList = new ArrayList<PotListener>();
@@ -35,10 +36,16 @@ public class Pot extends GameObject implements CollisionInterface
 		}
 	}
 
-	public Pot(String id, String name, GraphicAsset image, Vector2 positionGroup, GraphicAsset cookingImages, String bulgingSoundFX, float radius)
+	public Pot(String id,
+			   String name,
+			   GraphicAsset image,
+			   Vector2 positionGroup,
+			   GraphicAsset cookingImage,
+			   AudioAsset bulgingSoundFX,
+			   float radius)
 	{
 		super(id, name, image, positionGroup);
-		this.cookingImages = cookingImages;
+		this.cookingImages = cookingImage;
 		this.bulgingSoundFX = bulgingSoundFX;
 		this.radius = radius;
 		this.listenerList = new ArrayList<PotListener>();
@@ -49,7 +56,7 @@ public class Pot extends GameObject implements CollisionInterface
 		return cookingImages;
 	}
 
-	public String getBulgingSoundFX()
+	public AudioAsset getBulgingSoundFX()
 	{
 		return bulgingSoundFX;
 	}

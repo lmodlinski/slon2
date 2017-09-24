@@ -1,6 +1,7 @@
 package com.psychogra.slon2.models.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.psychogra.slon2.BundleManagement.AudioAsset;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.PotGameInputProcessor;
 import com.psychogra.slon2.models.interfaces.CollisionInterface;
@@ -26,7 +27,10 @@ public class PotGame extends Game
 
 	private PotGameInputProcessor input;
 
-	public PotGame(GraphicAsset background, String music, Dish dish, Pot pot)
+	public PotGame(GraphicAsset background,
+				   AudioAsset music,
+				   Dish dish,
+				   Pot pot)
 	{
 		super(background, music);
 
