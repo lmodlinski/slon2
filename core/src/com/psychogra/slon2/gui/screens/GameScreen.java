@@ -9,11 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.psychogra.slon2.BundleManagement.BundleDTO;
 import com.psychogra.slon2.BundleManagement.BundleManager;
+import com.psychogra.slon2.SlonMain;
 import com.psychogra.slon2.config;
 import com.psychogra.slon2.models.factory.GameFactory;
 import com.psychogra.slon2.models.game.Game;
 import com.psychogra.slon2.models.game.PotGame;
 import com.psychogra.slon2.models.rules.EqualityRule;
+import com.psychogra.slon2.models.rules.Rule;
 
 /**
  * Created by lmodlinski on 24/09/2017.
@@ -21,6 +23,7 @@ import com.psychogra.slon2.models.rules.EqualityRule;
 
 public class GameScreen implements Screen
 {
+	private SlonMain main;
 	private SpriteBatch batch;
 
 	private Stage stage;
@@ -28,8 +31,10 @@ public class GameScreen implements Screen
 
 	private Game game;
 
-	public GameScreen()
+	public GameScreen(SlonMain main, Rule rule)
 	{
+		this.main = main;
+
 		this.batch = new SpriteBatch();
 		this.stage = new Stage(new ScreenViewport());
 
@@ -40,7 +45,7 @@ public class GameScreen implements Screen
 
 		BundleDTO bundle = BundleManager.deserializeBundle("bundle");
 		this.game = (new GameFactory(bundle)).getGame(bundle.games[0]);
-		((PotGame) this.game).getDish().getRecipe().getRules().add(new EqualityRule());
+		((PotGame) this.game).getDish().getRecipe().getRules().add(rule);
 
 		//this.game = (new SlonTemplates()).getPopeGame();
 		this.game.run();
@@ -66,7 +71,7 @@ public class GameScreen implements Screen
 
 		this.batch.begin();
 
-		this.game.render(this.batch);
+		this.game.render(this.batch, delta);
 
 		this.batch.end();
 
@@ -77,13 +82,12 @@ public class GameScreen implements Screen
 	private void checkResult()
 	{
 		switch (this.game.getResult()) {
+			case EXITING:
+				this.main.setScreen(new LevelScreen(this.main));
+				break;
 			case SUCCESS:
-				Gdx.app.exit();
-				break;
-			case IN_PROGRESS:
-				break;
 			case FAILURE:
-				Gdx.app.exit();
+			case IN_PROGRESS:
 				break;
 		}
 	}
@@ -115,6 +119,7 @@ public class GameScreen implements Screen
 	@Override
 	public void dispose()
 	{
+		this.batch.dispose();
 		this.stage.dispose();
 	}
 

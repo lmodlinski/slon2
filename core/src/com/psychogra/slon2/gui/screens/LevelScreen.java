@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -16,6 +17,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.SlonMain;
 import com.psychogra.slon2.SlonTemplates;
+import com.psychogra.slon2.models.rules.EqualityRule;
+import com.psychogra.slon2.models.rules.SequenceRule;
 
 /**
  * Created by lmodlinski on 24/09/2017.
@@ -39,20 +42,17 @@ public class LevelScreen implements Screen
 		{
 			SlonTemplates templates = new SlonTemplates();
 
-			GraphicAsset start_button = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");
-			GraphicAsset play_button = templates.getAsset("main_screen_start_button", "gui/main_screen_play_button.png");
-			GraphicAsset background = templates.getAsset("main_screen_background", "gui/levels_screen_background.png");
-
-			GraphicAsset level1Asset = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");
-			GraphicAsset level2Asset = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");
-			GraphicAsset otherLevelsAsset = templates.getAsset("main_screen_start_button", "gui/main_screen_play_button.png");
+			GraphicAsset background = templates.getAsset("main_screen_background", "gui/Ekran_wyboru_poziomu.png");
+			GraphicAsset level1Asset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom.png");
+			GraphicAsset level2Asset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom.png");
+			GraphicAsset otherLevelsAsset = templates.getAsset("main_screen_start_button", "gui/Nieaktywny_poziom.png");
 
 			//this.start = new ImageButton(new TextureRegionDrawable(new TextureRegion(start_button.getTexture())));
 			//this.start.addListener(new MainScreenInputListener(main));
 
 			//this.next = new ImageButton(new TextureRegionDrawable(new TextureRegion(play_button.getTexture())));
 
-
+            //Image napis = new Image(new TextureRegionDrawable(new TextureRegion(napisAsset.getTexture())));
 			this.level1 = new ImageButton(new TextureRegionDrawable(new TextureRegion(level1Asset.getTexture())));
             this.level1.addListener(new LevelScreenInputListener(main));
             this.level2 = new ImageButton(new TextureRegionDrawable(new TextureRegion(level2Asset.getTexture())));
@@ -68,16 +68,21 @@ public class LevelScreen implements Screen
 
             this.group = new VerticalGroup();
 
+            //this.group.addActor(napis);
+            //this.group.padRight(80.0f);
+            //this.group.padTop(40.0f);
             this.group.setFillParent(true);
-
+            this.group.align(Align.right);
             this.horizontalGroup1 = new HorizontalGroup();
             this.horizontalGroup1.addActor(this.level1);
             this.horizontalGroup1.addActor(this.level2);
             this.horizontalGroup1.addActor(this.level3);
-            float padding = 100.0f;
+            float padding = 60.0f;
             this.group.addActor(this.horizontalGroup1);
             this.horizontalGroup1.space(padding);
-
+            this.horizontalGroup1.padRight(60.0f);
+            this.horizontalGroup1.padTop(100.0f);
+/*
 			this.horizontalGroup2 = new HorizontalGroup();
             this.horizontalGroup2.addActor(this.level4);
             this.horizontalGroup2.addActor(this.level5);
@@ -85,13 +90,15 @@ public class LevelScreen implements Screen
 
             this.group.addActor(this.horizontalGroup2);
             this.horizontalGroup2.space(padding);
+            this.horizontalGroup2.padRight(250.0f);
+            */
             this.group.space(padding);
-
+            //this.group.padLeft(100.0f);
 
 
 			//this.group.addActor(this.start);
 			//this.group.addActor(this.next);
-			this.group.align(Align.center);
+
 
 			this.background = background;
 
@@ -167,9 +174,9 @@ public class LevelScreen implements Screen
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 			{
                 if(event.getListenerActor().equals(level1)) {
-                    this.main.setScreen(new GameScreen());
+                    this.main.setScreen(new GameScreen(this.main,new EqualityRule()));
                 }else if(event.getListenerActor().equals(level2)) {
-
+                    this.main.setScreen(new GameScreen(this.main,new SequenceRule()));
                 }else {
 
                 }

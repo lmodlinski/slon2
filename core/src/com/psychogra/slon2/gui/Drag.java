@@ -1,7 +1,6 @@
 package com.psychogra.slon2.gui;
 
 import com.badlogic.gdx.math.Vector2;
-import com.psychogra.slon2.models.GameObject;
 import com.psychogra.slon2.models.interfaces.CollisionInterface;
 import com.psychogra.slon2.models.pot.Ingredient;
 
@@ -13,6 +12,7 @@ public class Drag implements CollisionInterface
 {
 	private float radius;
 	private Vector2 position;
+	private Vector2 release;
 	private Ingredient object;
 
 	public Drag(float radius, Vector2 position)
@@ -20,20 +20,35 @@ public class Drag implements CollisionInterface
 		this.radius = radius;
 		this.position = position;
 	}
+
 	public void setPosition(Vector2 position)
 	{
 		this.position = position;
 	}
-	public void releaseGameObject(){
+
+	public void releaseGameObject()
+	{
 		this.object = null;
 	}
-	public Ingredient getGameObject(){
+
+	public Ingredient getGameObject()
+	{
 		return this.object;
 	}
 
 	public void setGameObject(Ingredient obj)
 	{
 		this.object = obj;
+	}
+
+	public Vector2 getRelease()
+	{
+		return release;
+	}
+
+	public void setRelease(Vector2 release)
+	{
+		this.release = release;
 	}
 
 	@Override

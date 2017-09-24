@@ -28,12 +28,12 @@ public class Table extends GameObject
 	}
 
 	@Override
-	public void render(SpriteBatch batch)
+	public void render(SpriteBatch batch, float dt)
 	{
-		super.render(batch);
+		super.render(batch, dt);
 
 		for (Ingredient ingredient : this.getIngredients()) {
-			ingredient.render(batch);
+			ingredient.render(batch, dt);
 		}
 	}
 

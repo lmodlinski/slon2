@@ -43,7 +43,7 @@ abstract public class Game implements RenderableInterface
 	public abstract InputProcessor getProcessor();
 
 	@Override
-	public void render(SpriteBatch batch)
+	public void render(SpriteBatch batch, float dt)
 	{
 		batch.draw(this.getBackground().getTexture(), 0, 0);
 	}
@@ -75,7 +75,7 @@ abstract public class Game implements RenderableInterface
 
 	public enum Result
 	{
-		SUCCESS, IN_PROGRESS, FAILURE
+		SUCCESS, IN_PROGRESS, FAILURE, EXITING
 	}
 }
 

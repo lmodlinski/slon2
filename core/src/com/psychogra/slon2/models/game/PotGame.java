@@ -72,16 +72,16 @@ public class PotGame extends Game
 	}
 
 	@Override
-	public void render(SpriteBatch batch)
+	public void render(SpriteBatch batch, float dt)
 	{
-		super.render(batch);
+		super.render(batch, dt);
 
 		Dish dish = this.getDish();
 		Table table = dish.getTable();
 
 		GraphicAsset image = table.getImage();
 
-		if(image != null)
+		if (image != null) {
 			batch.draw(
 					image.getTexture(),
 					0,
@@ -89,16 +89,11 @@ public class PotGame extends Game
 					config.width,
 					config.height
 			);
-
-		this.pot.render(batch);
-
-		for (Ingredient ingredient : this.getDish().getTable().getIngredients()) {
-			batch.draw(
-					ingredient.getImage().getTexture(),
-					ingredient.getCenteredPosition().x,
-					ingredient.getCenteredPosition().y
-			);
 		}
+
+		this.pot.render(batch, dt);
+
+		this.renderTableIngredients(batch, dt);
 
 		Recipe recipe = dish.getRecipe();
 		batch.draw(
@@ -112,6 +107,13 @@ public class PotGame extends Game
 
 		if (this.hasClock() && this.getClock().ticking()) {
 			this.renderClock(batch);
+		}
+	}
+
+	private void renderTableIngredients(SpriteBatch batch, float dt)
+	{
+		for (Ingredient ingredient : this.getDish().getTable().getIngredients()) {
+			ingredient.render(batch, dt);
 		}
 	}
 
@@ -186,6 +188,11 @@ public class PotGame extends Game
 		}
 
 		return closest;
+	}
+
+	public void exit()
+	{
+		this.result = Result.EXITING;
 	}
 
 	public Dish getDish()
