@@ -30,7 +30,7 @@ public class SlonTemplates
 		GraphicAsset recipe = this.getAsset("przepis", "badlogic.jpg");
 		GraphicAsset ingredient = this.getAsset("skladnik", "pope_bundle/cream.PNG");
 		GraphicAsset pot = this.getAsset("gar", "pope_bundle/pope.PNG");
-		GraphicAsset result = this.getAsset("result", "pope_bundle/recipe_bg.png");
+		GraphicAsset result = this.getAsset("result", "pope_bundle/recipe_bg.jpg");
 
 		AudioAsset sound = this.getSound("sound", "pope_bundle/sound.mp3");
 
