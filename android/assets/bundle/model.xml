@@ -6,7 +6,7 @@
             <type>PotGame</type>
             <name>Przyjazne Gotowanie</name>
             <background>background</background>
-            <audio></audio>
+            <audio>null</audio>
             <scene>
                 <id>scena</id>
                 <positions>
@@ -65,7 +65,7 @@
                             </element>
                             <element>
                                 <key>bulgingSoundFX</key>
-                                <value></value>
+                                <value>null</value>
                             </element>
                             <element>
                                 <key>radius</key>
@@ -90,11 +90,11 @@
                             </element>
                             <element>
                                 <key>droppingSound</key>
-                                <value></value>
+                                <value>null</value>
                             </element>
                             <element>
                                 <key>draggingSound</key>
-                                <value></value>
+                                <value>null</value>
                             </element>
                             <element>
                                 <key>radius</key>
@@ -115,7 +115,7 @@
                         <id>table</id>
                         <name>stół</name>
                         <type>Table</type>
-                        <image></image>
+                        <image>null</image>
                         <positionGroup>pot</positionGroup>
                         <extraAttributes>
                         </extraAttributes>
@@ -124,7 +124,7 @@
                         <id>recipe</id>
                         <name>przepis</name>
                         <type>Recipe</type>
-                        <image></image>
+                        <image>null</image>
                         <positionGroup>recipe</positionGroup>
                         <extraAttributes>
                         </extraAttributes>
@@ -190,9 +190,9 @@
         </graphicAsset>
     </graphicAssets>
     <audioAssets>
-        <audioAsset>
-            <id>zarzynanie</id>
-            <path>x/y.mp3</path>
-        </audioAsset>
+        <!--<audioAsset>-->
+            <!--&lt;!&ndash;<id>zarzynanie</id>&ndash;&gt;-->
+            <!--&lt;!&ndash;<path>x/y.mp3</path>&ndash;&gt;-->
+        <!--</audioAsset>-->
     </audioAssets>
 </bundle>

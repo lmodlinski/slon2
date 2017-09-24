@@ -30,9 +30,11 @@ public class BundleManager {
     public static BundleDTO deserializeBundle(String path){
 
         try {
-            InputStream stream = new FileInputStream(path + "/model.xml");
-            deserializeBundle(path, stream);
+            Gdx.app.log("BundleManager", "Run this shit.");
+            InputStream stream = Gdx.files.internal(path + "/model.xml").read();
+            BundleDTO bundle = deserializeBundle(path, stream);
             stream.close();
+            return bundle;
         } catch (FileNotFoundException exception){
             Gdx.app.log("BundleManager", "File not found.");
         } catch (IOException exception){
@@ -66,10 +68,10 @@ public class BundleManager {
         HashMap<String, GraphicAsset> map = new HashMap<String, GraphicAsset>();
         for(int i = 0; i < element.getChildCount(); i++){
             XmlReader.Element asset = element.getChild(i);
-            String id = asset.getAttribute("id");
-            Texture texture = new Texture(Gdx.files.getFileHandle(path + "/" + asset.getAttribute("path"), Files.FileType.Internal));
-            float x = Float.parseFloat(asset.getAttribute("x"));
-            float y = Float.parseFloat(asset.getAttribute("y"));
+            String id = asset.get("id");
+            Texture texture = new Texture(Gdx.files.getFileHandle(path + "/" + asset.get("path"), Files.FileType.Internal));
+            float x = Float.parseFloat(asset.get("x"));
+            float y = Float.parseFloat(asset.get("y"));
             map.put(id, new GraphicAsset(id, texture, new Vector2(x, y)));
         }
         return map;
@@ -80,8 +82,8 @@ public class BundleManager {
         HashMap<String, AudioAsset> map = new HashMap<String, AudioAsset>();
         for(int i = 0; i < element.getChildCount(); i++){
             XmlReader.Element asset = element.getChild(i);
-            String id = asset.getAttribute("id");
-            Sound sound = Gdx.audio.newSound(Gdx.files.getFileHandle(path + "/" + asset.getAttribute("path"), Files.FileType.Internal));
+            String id = asset.get("id");
+            Sound sound = Gdx.audio.newSound(Gdx.files.getFileHandle(path + "/" + asset.get("path"), Files.FileType.Internal));
             map.put(id, new AudioAsset(id, sound));
         }
         return map;
@@ -94,7 +96,7 @@ public class BundleManager {
 
         for(int i = 0; i < len; i++){
             XmlReader.Element game = element.getChild(i);
-            String type = game.getAttribute("type");
+            String type = game.get("type");
 
             if(type.equals("PotGame"))
                 games[i] = getPotGame(game);
@@ -103,9 +105,9 @@ public class BundleManager {
                 break;
             }
             GameDTO g = games[i];
-            g.name = game.getAttribute("name");
-            g.background = bundle.graphicAssetMap.get(game.getAttribute("background"));
-            g.audio = bundle.audioAssetMap.get(game.getAttribute("audio"));
+            g.name = game.get("name");
+            g.background = bundle.graphicAssetMap.get(game.get("background"));
+            g.audio = bundle.audioAssetMap.get(game.get("audio"));
             g.scene = getScene(game.getChildByName("scene"));
         }
         return games;
@@ -113,31 +115,52 @@ public class BundleManager {
 
     private PotGameDTO getPotGame(XmlReader.Element element){
         PotGameDTO game = new PotGameDTO();
-        game.dishes = (DishDTO[]) getList(element.getChildByName("dishes"), new IConverter<DishDTO>() {
+        ArrayList<DishDTO> dishes =  getArrayList(element.getChildByName("dishes"), new IConverter<DishDTO>() {
             @Override
             public DishDTO convert(XmlReader.Element element) {
                 DishDTO dish = new DishDTO();
-                dish.id = element.getAttribute("id");
-                dish.recipId = element.getAttribute("recipId");
-                dish.tableId = element.getAttribute("tableId");
-                dish.recipePositions = getList(element.getChildByName("recipePositions"), new IConverter<Vector2>() {
+                dish.id = element.get("id");
+                dish.recipId = element.get("recipId");
+                dish.tableId = element.get("tableId");
+                dish.recipePositions = getArrayList(
+                        element.getChildByName("recipePositions"),
+                        new IConverter<Vector2>() {
                     @Override
                     public Vector2 convert(XmlReader.Element element) {
-                        float x = Float.parseFloat(element.getAttribute("x"));
-                        float y = Float.parseFloat(element.getAttribute("y"));
+                        float x = Float.parseFloat(element.get("x"));
+                        float y = Float.parseFloat(element.get("y"));
                         return new Vector2(x, y);
                     }
                 });
+                dish.recip = getArrayList(
+                        element.getChildByName("recip"),
+                        new IConverter<String>() {
+                            @Override
+                            public String convert(XmlReader.Element element) {
+                                return element.getText();
+                            }
+                        }
+                );
+                dish.table = getArrayList(
+                        element.getChildByName("table"),
+                        new IConverter<String>() {
+                            @Override
+                            public String convert(XmlReader.Element element) {
+                                return element.getText();
+                            }
+                        }
+                );
                 return dish;
             }
-        }).toArray();
-        game.potId = element.getAttribute("potId");
+        });
+        game.dishes = dishes;
+        game.potId = element.get("potId");
         return game;
     }
 
     private SceneDTO getScene(XmlReader.Element element){
         SceneDTO scene = new SceneDTO();
-        scene.id = element.getAttribute("id");
+        scene.id = element.get("id");
 
         scene.positions = getPositions(element.getChildByName("positions"));
         scene.gameObjects = getGameObjects(element.getChildByName("gameObjects"));
@@ -151,9 +174,9 @@ public class BundleManager {
         for(int i = 0; i < len; i++){
             XmlReader.Element pos = element.getChild(i);
             PositionDTO position = new PositionDTO();
-            position.tag = pos.getAttribute("tag");
-            float x = Float.parseFloat(pos.getAttribute("x"));
-            float y = Float.parseFloat(pos.getAttribute("y"));
+            position.tag = pos.get("tag");
+            float x = Float.parseFloat(pos.get("x"));
+            float y = Float.parseFloat(pos.get("y"));
             position.position = new Vector2(x, y);
             positions[i] = position;
         }
@@ -171,22 +194,22 @@ public class BundleManager {
 
     private GameObjectDTO getGameObject(XmlReader.Element element){
         GameObjectDTO gameObject = new GameObjectDTO();
-        gameObject.id = element.getAttribute("id");
-        gameObject.name = element.getAttribute("name");
-        gameObject.type = element.getAttribute("type");
-        gameObject.image = bundle.graphicAssetMap.get(element.getAttribute("image"));
-        gameObject.positionGroup = element.getAttribute("positionGroup");
+        gameObject.id = element.get("id");
+        gameObject.name = element.get("name");
+        gameObject.type = element.get("type");
+        gameObject.image = bundle.graphicAssetMap.get(element.get("image"));
+        gameObject.positionGroup = element.get("positionGroup");
         Map<String, String> attributes = new HashMap<String, String>();
         XmlReader.Element extras = element.getChildByName("extraAttributes");
         for(int i = 0; i < extras.getChildCount(); i++){
             XmlReader.Element pair = extras.getChild(i);
-            attributes.put(pair.getAttribute("key"), pair.getAttribute("value"));
+            attributes.put(pair.get("key"), pair.get("value"));
         }
         gameObject.extraAttributes = attributes;
         return gameObject;
     }
 
-    private <T> ArrayList<T> getList(XmlReader.Element element, IConverter<T> converter){
+    private <T> ArrayList<T> getArrayList(XmlReader.Element element, IConverter<T> converter){
         int len = element.getChildCount();
         ArrayList<T> list = new ArrayList<T>(len);
 
