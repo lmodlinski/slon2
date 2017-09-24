@@ -12,6 +12,7 @@ import com.psychogra.slon2.models.pot.Ingredient;
 import com.psychogra.slon2.models.pot.Pot;
 import com.psychogra.slon2.models.pot.Recipe;
 import com.psychogra.slon2.models.pot.Table;
+import com.psychogra.slon2.models.pot.Clock;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,18 @@ public class PotGame extends Game
 		this.dish = dish;
 		this.pot = pot;
 	}
+
+	public PotGame(GraphicAsset background,
+				   AudioAsset music,
+				   Dish dish,
+				   Pot pot, Clock clock)
+	{
+		super(background, music, clock);
+
+		this.dish = dish;
+		this.pot = pot;
+	}
+
 
 	@Override
 	public InputProcessor getProcessor()
@@ -96,6 +109,10 @@ public class PotGame extends Game
 
 		this.renderRecipeIngredients(batch);
 		this.renderResult(batch);
+
+		if (this.hasClock() && this.getClock().ticking()) {
+			this.renderClock(batch);
+		}
 	}
 
 	private void renderRecipeIngredients(SpriteBatch batch)
@@ -122,15 +139,28 @@ public class PotGame extends Game
 		}
 	}
 
+	private void renderClock(SpriteBatch batch)
+	{
+		batch.draw(
+				this.getClock().getImage().getTexture(),
+				this.getClock().getPosition().x,
+				this.getClock().getPosition().y
+		);
+	}
+
 	public boolean drop(Ingredient ingredient)
 	{
-		if (ingredient.collisionWith(this.getPot())) {
+		if (ingredient.collisionWith(this.getPot()) && (!this.hasClock() || !this.getClock().ticking())) {
 			ArrayList<Ingredient> copy = new ArrayList<Ingredient>(this.getProgress());
 			copy.add(ingredient);
 
 			if (this.getDish().getRecipe().isValid(copy)) {
 				this.getProgress().add(ingredient);
 				this.getDish().getTable().drop(ingredient);
+
+				if (this.hasClock() && 0 < ingredient.getTime()) {
+					this.getClock().measure(ingredient.getTime());
+				}
 
 				this.invalidate();
 

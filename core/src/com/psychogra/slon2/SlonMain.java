@@ -1,6 +1,7 @@
 package com.psychogra.slon2;
 
 import com.badlogic.gdx.Game;
+import com.psychogra.slon2.gui.screens.LevelScreen;
 import com.psychogra.slon2.gui.screens.MainScreen;
 
 public class SlonMain extends Game
