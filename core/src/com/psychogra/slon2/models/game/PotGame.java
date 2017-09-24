@@ -66,13 +66,16 @@ public class PotGame extends Game
 		Dish dish = this.getDish();
 		Table table = dish.getTable();
 
-		batch.draw(
-				table.getImage().getTexture(),
-				0,
-				0,
-				config.width,
-				config.height
-		);
+		GraphicAsset image = table.getImage();
+
+		if(image != null)
+			batch.draw(
+					image.getTexture(),
+					0,
+					0,
+					config.width,
+					config.height
+			);
 
 		this.pot.render(batch);
 

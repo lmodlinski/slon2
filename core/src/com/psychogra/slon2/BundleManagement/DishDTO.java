@@ -8,7 +8,7 @@ public class DishDTO {
 
     public String id;
     public String recipId, tableId;
-    public String[] recip;
-    public String[] table;
+    public ArrayList<String> recip;
+    public ArrayList<String> table;
     public ArrayList<Vector2> recipePositions;
 }

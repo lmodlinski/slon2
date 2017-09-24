@@ -55,7 +55,7 @@ public class GameFactory
 		return new PotGame(
 				dto.background,
 				dto.audio,
-				getDish(dto.dishes[0], dto.scene),
+				getDish(dto.dishes.get(0), dto.scene),
 				getPot(dto.scene.gameObjects.get(dto.potId), dto.scene)
 		);
 	}
