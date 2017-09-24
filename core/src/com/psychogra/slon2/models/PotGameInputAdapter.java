@@ -28,6 +28,8 @@ public class PotGameInputAdapter extends InputAdapter
 		Ingredient held = this.game.closest(this.drag);
 
 		if (held != null) {
+
+			drag.setPosition(held.getPosition());
 			this.drag.setGameObject(held);
 
 		}
