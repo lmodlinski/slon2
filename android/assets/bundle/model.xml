@@ -4,60 +4,187 @@
     <games>
         <game>
             <type>PotGame</type>
-            <name>moja gra</name>
-            <background>13231231</background>
-            <audio>123132313</audio>
+            <name>Przyjazne Gotowanie</name>
+            <background>background</background>
+            <audio></audio>
             <scene>
-                <id>qwerty</id>
+                <id>scena</id>
                 <positions>
                     <position>
-                        <tag>background</tag>
+                        <tag>pot</tag>
                         <x>24</x>
                         <y>32</y>
+                    </position>
+                    <position>
+                        <tag>ingredient</tag>
+                        <x>240</x>
+                        <y>180</y>
+                    </position>
+                    <position>
+                        <tag>ingredient</tag>
+                        <x>240</x>
+                        <y>280</y>
+                    </position>
+                    <position>
+                        <tag>ingredient</tag>
+                        <x>240</x>
+                        <y>300</y>
+                    </position>
+                    <position>
+                        <tag>ingredient</tag>
+                        <x>100</x>
+                        <y>180</y>
+                    </position>
+                    <position>
+                        <tag>dish</tag>
+                        <x>240</x>
+                        <y>180</y>
+                    </position>
+                    <position>
+                        <tag>table</tag>
+                        <x>240</x>
+                        <y>180</y>
+                    </position>
+                    <position>
+                        <tag>recipe</tag>
+                        <x>240</x>
+                        <y>180</y>
                     </position>
                 </positions>
                 <gameObjects>
                     <gameObject>
-                        <id>id</id>
-                        <name>name</name>
-                        <type>type</type>
-                        <image>123</image>
-                        <positionGroup>xxx</positionGroup>
+                        <id>pot</id>
+                        <name>garnek</name>
+                        <type>Pot</type>
+                        <image>pot</image>
+                        <positionGroup>pot</positionGroup>
                         <extraAttributes>
                             <element>
-                                <key>key</key>
-                                <value>value</value>
+                                <key>cookingImage</key>
+                                <value>a.png</value>
                             </element>
+                            <element>
+                                <key>bulgingSoundFX</key>
+                                <value></value>
+                            </element>
+                            <element>
+                                <key>radius</key>
+                                <value>50</value>
+                            </element>
+                        </extraAttributes>
+                    </gameObject>
+                    <gameObject>
+                        <id>ingredient</id>
+                        <name>składnik</name>
+                        <type>Ingredient</type>
+                        <image>ingredient</image>
+                        <positionGroup>ingredient</positionGroup>
+                        <extraAttributes>
+                            <element>
+                                <key>inGameImage</key>
+                                <value>ingredient</value>
+                            </element>
+                            <element>
+                                <key>droppedImage</key>
+                                <value>ingredient</value>
+                            </element>
+                            <element>
+                                <key>droppingSound</key>
+                                <value></value>
+                            </element>
+                            <element>
+                                <key>draggingSound</key>
+                                <value></value>
+                            </element>
+                            <element>
+                                <key>radius</key>
+                                <value>50</value>
+                            </element>
+                        </extraAttributes>
+                    </gameObject>
+                    <gameObject>
+                        <id>dish</id>
+                        <name>sałatka z raka</name>
+                        <type>Dish</type>
+                        <image>ingredient</image>
+                        <positionGroup>dish</positionGroup>
+                        <extraAttributes>
+                        </extraAttributes>
+                    </gameObject>
+                    <gameObject>
+                        <id>table</id>
+                        <name>stół</name>
+                        <type>Table</type>
+                        <image></image>
+                        <positionGroup>pot</positionGroup>
+                        <extraAttributes>
+                        </extraAttributes>
+                    </gameObject>
+                    <gameObject>
+                        <id>recipe</id>
+                        <name>przepis</name>
+                        <type>Recipe</type>
+                        <image></image>
+                        <positionGroup>recipe</positionGroup>
+                        <extraAttributes>
                         </extraAttributes>
                     </gameObject>
                 </gameObjects>
             </scene>
             <dishes>
                 <dish>
-                    <id>0</id>
-                    <recipId>123</recipId>
-                    <tableId>213</tableId>
+                    <id>dish</id>
+                    <recipId>recipe</recipId>
+                    <tableId>table</tableId>
                     <recip>
-                        <indegriend>1</indegriend>
+                        <indegriend>ingredient</indegriend>
+                        <indegriend>ingredient</indegriend>
                     </recip>
                     <table>
-                        <indegriend>2</indegriend>
+                        <indegriend>ingredient</indegriend>
+                        <indegriend>ingredient</indegriend>
+                        <indegriend>ingredient</indegriend>
+                        <indegriend>ingredient</indegriend>
                     </table>
                     <recipePositions>
                         <position>
                             <x>24</x>
                             <y>32</y>
                         </position>
+                        <position>
+                            <x>240</x>
+                            <y>32</y>
+                        </position>
+                        <position>
+                            <x>24</x>
+                            <y>320</y>
+                        </position>
+                        <position>
+                            <x>240</x>
+                            <y>320</y>
+                        </position>
                     </recipePositions>
                 </dish>
             </dishes>
-            <potId>123</potId>
+            <potId>pot</potId>
         </game>
     </games>
     <graphicAssets>
         <graphicAsset>
-            <id>zwloki</id>
-            <path>abc/x.png</path>
+            <id>pot</id>
+            <path>elements/a.png</path>
+            <x>0.6</x>
+            <y>.2</y>
+        </graphicAsset>
+        <graphicAsset>
+            <id>ingredient</id>
+            <path>elements/b.png</path>
+            <x>0.6</x>
+            <y>.2</y>
+        </graphicAsset>
+        <graphicAsset>
+            <id>background</id>
+            <path>bg.png</path>
             <x>0.6</x>
             <y>.2</y>
         </graphicAsset>
