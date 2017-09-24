@@ -1,7 +1,9 @@
 package com.psychogra.slon2;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.psychogra.slon2.BundleManagement.AudioAsset;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.game.Game;
 import com.psychogra.slon2.models.game.PotGame;
@@ -30,22 +32,24 @@ public class SlonTemplates
 		GraphicAsset pot = this.getAsset("gar", "pope_bundle/pope.PNG");
 		GraphicAsset result = this.getAsset("result", "pope_bundle/recipe_bg.png");
 
+		AudioAsset sound = this.getSound("sound", "pope_bundle/sound.mp3");
+
 		ArrayList<Ingredient> recipeList = new ArrayList<Ingredient>();
-		recipeList.add(this.getIngredient("kremowka_1", new Vector2(1500, 1200), ingredient, 50.0f));
-		recipeList.add(this.getIngredient("kremowka_2", new Vector2(1200, 1200), ingredient, 50.0f));
-		recipeList.add(this.getIngredient("kremowka_3", new Vector2(900, 1200), ingredient, 50.0f));
+		recipeList.add(this.getIngredient("kremowka_1", new Vector2(1500, 1200), ingredient, sound, 50.0f));
+		recipeList.add(this.getIngredient("kremowka_2", new Vector2(1200, 1200), ingredient, sound, 50.0f));
+		recipeList.add(this.getIngredient("kremowka_3", new Vector2(900, 1200), ingredient, sound, 50.0f));
 
 		ArrayList<Ingredient> tableList = new ArrayList<Ingredient>();
-		tableList.add(this.getIngredient("kremowka_1", new Vector2(1500, 100), ingredient, 50.0f));
-		tableList.add(this.getIngredient("kremowka_2", new Vector2(1200, 100), ingredient, 50.0f));
-		tableList.add(this.getIngredient("kremowka_3", new Vector2(900, 100), ingredient, 50.0f));
+		tableList.add(this.getIngredient("kremowka_1", new Vector2(1500, 100), ingredient, sound, 50.0f));
+		tableList.add(this.getIngredient("kremowka_2", new Vector2(1200, 100), ingredient, sound, 50.0f));
+		tableList.add(this.getIngredient("kremowka_3", new Vector2(900, 100), ingredient, sound, 50.0f));
 
 
-		return new PotGame(ingredient, "pope_game",
+		return new PotGame(ingredient, sound,
 				new Dish("pope_dish", "pope_dish", result, config.getCenter(),
 						new Recipe("pope_recipe", "pope_recipe", recipe, new Vector2(100, 100), recipeList, this.getEqualityRules()),
 						new Table("pope_table", "pope_table", stol, new Vector2(200, 200), tableList)),
-				new Pot("pope_pot", "pope_pot", pot, config.getCenter(), null, "bulging", 10.0f));
+				new Pot("pope_pot", "pope_pot", pot, config.getCenter(), null, sound, 10.0f));
 	}
 
 	public ArrayList<Rule> getSequenceRules()
@@ -64,13 +68,18 @@ public class SlonTemplates
 		return rules;
 	}
 
-	public Ingredient getIngredient(String id, Vector2 position, GraphicAsset image, float radius)
+	public Ingredient getIngredient(String id, Vector2 position, GraphicAsset image, AudioAsset audio, float radius)
 	{
-		return new Ingredient(id, id, image, position, image, image, "default_dropping", "default_dragging", radius);
+		return new Ingredient(id, id, image, position, image, image, audio, audio, radius);
 	}
 
 	public GraphicAsset getAsset(String id, String path)
 	{
 		return new GraphicAsset(id, new Texture(path));
+	}
+
+	public AudioAsset getSound(String id, String path)
+	{
+		return new AudioAsset(id, Gdx.audio.newSound(Gdx.files.internal(path)));
 	}
 }
