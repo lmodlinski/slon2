@@ -8,5 +8,5 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public interface RenderableInterface
 {
-	public void render(SpriteBatch batch);
+	public void render(SpriteBatch batch, float dt);
 }

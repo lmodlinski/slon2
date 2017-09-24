@@ -29,10 +29,10 @@ public class Dish extends GameObject
 	}
 
 	@Override
-	public void render(SpriteBatch batch)
+	public void render(SpriteBatch batch, float dt)
 	{
-		this.table.render(batch);
-		this.recipe.render(batch);
+		this.table.render(batch, dt);
+		this.recipe.render(batch, dt);
 	}
 
 	public Recipe getRecipe()

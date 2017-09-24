@@ -49,7 +49,7 @@ public class GameObject implements RenderableInterface
 	}
 
 	@Override
-	public void render(SpriteBatch batch)
+	public void render(SpriteBatch batch, float dt)
 	{
 		batch.draw(this.getImage().getTexture(), this.getCenteredPosition().x, this.getCenteredPosition().y);
 	}

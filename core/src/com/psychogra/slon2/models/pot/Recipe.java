@@ -32,12 +32,12 @@ public class Recipe extends GameObject
 	}
 
 	@Override
-	public void render(SpriteBatch batch)
+	public void render(SpriteBatch batch, float dt)
 	{
-		super.render(batch);
+		super.render(batch, dt);
 
 		for (Ingredient ingredient : this.ingredients) {
-			ingredient.render(batch);
+			ingredient.render(batch, dt);
 		}
 	}
 

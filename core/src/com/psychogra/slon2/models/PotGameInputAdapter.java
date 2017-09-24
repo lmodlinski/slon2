@@ -49,9 +49,9 @@ public class PotGameInputAdapter extends InputAdapter
 	{
 		if (this.drag.getGameObject() != null) {
 			if (!this.game.drop(this.drag.getGameObject())) {
-				this.drag.getGameObject().setPosition(
-						this.drag.getPosition()
-				);
+				this.drag.setRelease(new Vector2(x, config.height - y));
+				this.drag.getGameObject().setTarget(this.drag);
+
 			} else if (null != this.game.getPot().getBulgingSoundFX()) {
 				this.game.getPot().getBulgingSoundFX().getSound().play(1.0f);
 			}
@@ -65,9 +65,9 @@ public class PotGameInputAdapter extends InputAdapter
 	@Override
 	public boolean touchDragged(int x, int y, int pointer)
 	{
-
 		if (this.drag.getGameObject() != null) {
 			GameObject object = this.drag.getGameObject();
+
 			object.setPosition(new Vector2(x, config.height - y));
 		}
 

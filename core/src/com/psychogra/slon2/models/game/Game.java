@@ -43,7 +43,7 @@ abstract public class Game implements RenderableInterface
 	public abstract InputProcessor getProcessor();
 
 	@Override
-	public void render(SpriteBatch batch)
+	public void render(SpriteBatch batch, float dt)
 	{
 		batch.draw(this.getBackground().getTexture(), 0, 0);
 	}

@@ -70,7 +70,7 @@ public class GameScreen implements Screen
 
 		this.batch.begin();
 
-		this.game.render(this.batch);
+		this.game.render(this.batch, delta);
 
 		this.batch.end();
 
