@@ -18,10 +18,10 @@ import com.psychogra.slon2.models.pot.Ingredient;
 import com.psychogra.slon2.models.pot.Pot;
 import com.psychogra.slon2.models.pot.Recipe;
 import com.psychogra.slon2.models.pot.Table;
+import com.psychogra.slon2.models.rules.Rule;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by lmodlinski on 23/09/2017.
@@ -84,7 +84,7 @@ public class GameFactory
 				recipeDTO.image,
 				getPosition(recipeDTO.positionGroup, scene),
 				ingredients,
-				null
+				new ArrayList<Rule>()
 		);
 	}
 
