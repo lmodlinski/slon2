@@ -147,7 +147,7 @@ public class PotGame extends Game
 
 	public boolean drop(Ingredient ingredient)
 	{
-		if (ingredient.collisionWith(this.getPot())) {
+		if (ingredient.collisionWith(this.getPot()) && (!this.hasClock() || !this.getClock().ticking())) {
 			ArrayList<Ingredient> copy = new ArrayList<Ingredient>(this.getProgress());
 			copy.add(ingredient);
 
@@ -155,7 +155,7 @@ public class PotGame extends Game
 				this.getProgress().add(ingredient);
 				this.getDish().getTable().drop(ingredient);
 
-				if (this.hasClock()) {
+				if (this.hasClock() && 0 < ingredient.getTime()) {
 					this.getClock().measure(ingredient.getTime());
 				}
 
