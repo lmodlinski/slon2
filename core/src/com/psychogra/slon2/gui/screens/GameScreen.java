@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.psychogra.slon2.BundleManagement.BundleDTO;
-import com.psychogra.slon2.BundleManagement.BundleManager;
 import com.psychogra.slon2.SlonTemplates;
 import com.psychogra.slon2.config;
 import com.psychogra.slon2.models.game.Game;
@@ -36,8 +34,8 @@ public class GameScreen implements Screen
 				this.stage.getHeight()
 		);
 
-		BundleDTO bundle = BundleManager.deserializeBundle("bundle");
-		// this.game = (new GameFactory(bundle)).getGame(bundle.games[0]); (new SlonTemplates()).getPopeGame();
+//		BundleDTO bundle = BundleManager.deserializeBundle("bundle");
+//		this.game = (new GameFactory(bundle)).getGame(bundle.games[0]);
 
 		this.game = (new SlonTemplates()).getPopeGame();
 		this.game.run();
