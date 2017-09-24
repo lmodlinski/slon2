@@ -18,7 +18,12 @@ public class Recipe extends GameObject
 
 	protected ArrayList<Rule> rules;
 
-	public Recipe(String id, String name, GraphicAsset image, Vector2 positionGroup, ArrayList<Ingredient> ingredients, ArrayList<Rule> rules)
+	public Recipe(String id,
+				  String name,
+				  GraphicAsset image,
+				  Vector2 positionGroup,
+				  ArrayList<Ingredient> ingredients,
+				  ArrayList<Rule> rules)
 	{
 		super(id, name, image, positionGroup);
 

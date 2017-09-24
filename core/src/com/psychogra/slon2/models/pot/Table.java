@@ -15,9 +15,14 @@ public class Table extends GameObject
 {
 	protected ArrayList<Ingredient> ingredients;
 
-	public Table(String id, String name, GraphicAsset image, Vector2 positionGroup, ArrayList<Ingredient> ingredients)
+	public Table(
+			String id,
+			String name,
+			GraphicAsset image,
+			Vector2 position,
+			ArrayList<Ingredient> ingredients)
 	{
-		super(id, name, image, positionGroup);
+		super(id, name, image, position);
 
 		this.ingredients = ingredients;
 	}

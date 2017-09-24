@@ -1,6 +1,7 @@
 package com.psychogra.slon2.models.pot;
 
 import com.badlogic.gdx.math.Vector2;
+import com.psychogra.slon2.BundleManagement.AudioAsset;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.GameObject;
 import com.psychogra.slon2.models.interfaces.CollisionInterface;
@@ -15,13 +16,13 @@ public class Ingredient extends GameObject implements CollisionInterface
 
 	private GraphicAsset droppedImage;
 
-	private String droppingSound;
+	private AudioAsset droppingSound;
 
-	private String draggingSound;
+	private AudioAsset draggingSound;
 
 	private float radius;
 
-	public Ingredient(String id, String name, GraphicAsset image, Vector2 positionGroup, GraphicAsset inGameImage, GraphicAsset droppedImage, String droppingSound, String draggingSound, float radius)
+	public Ingredient(String id, String name, GraphicAsset image, Vector2 positionGroup, GraphicAsset inGameImage, GraphicAsset droppedImage, AudioAsset droppingSound, AudioAsset draggingSound, float radius)
 	{
 		super(id, name, image, positionGroup);
 		this.inGameImage = inGameImage;
@@ -41,12 +42,12 @@ public class Ingredient extends GameObject implements CollisionInterface
 		return droppedImage;
 	}
 
-	public String getDroppingSound()
+	public AudioAsset getDroppingSound()
 	{
 		return droppingSound;
 	}
 
-	public String getDraggingSound()
+	public AudioAsset getDraggingSound()
 	{
 		return draggingSound;
 	}

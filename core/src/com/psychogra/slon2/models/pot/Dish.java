@@ -15,7 +15,12 @@ public class Dish extends GameObject
 
 	protected Table table;
 
-	public Dish(String id, String name, GraphicAsset image, Vector2 positionGroup, Recipe recipe, Table table)
+	public Dish(String id,
+				String name,
+				GraphicAsset image,
+				Vector2 positionGroup,
+				Recipe recipe,
+				Table table)
 	{
 		super(id, name, image, positionGroup);
 

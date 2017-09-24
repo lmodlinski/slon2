@@ -118,10 +118,12 @@ public class BundleManager {
             public DishDTO convert(XmlReader.Element element) {
                 DishDTO dish = new DishDTO();
                 dish.id = element.getAttribute("id");
-                dish.name = element.getAttribute("name");
+                dish.recipId = element.getAttribute("recipId");
+                dish.tableId = element.getAttribute("tableId");
                 return dish;
             }
         }).toArray();
+        game.potId = element.getAttribute("potId");
         return game;
     }
 

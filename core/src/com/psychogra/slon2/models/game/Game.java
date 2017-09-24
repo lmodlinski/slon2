@@ -1,6 +1,7 @@
 package com.psychogra.slon2.models.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.psychogra.slon2.BundleManagement.AudioAsset;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.models.interfaces.RenderableInterface;
 
@@ -12,11 +13,11 @@ abstract public class Game implements RenderableInterface
 {
 	protected GraphicAsset background;
 
-	protected String music;
+	protected AudioAsset music;
 
 	protected Result result;
 
-	public Game(GraphicAsset background, String music)
+	public Game(GraphicAsset background, AudioAsset music)
 	{
 		this.background = background;
 		this.music = music;
@@ -39,7 +40,7 @@ abstract public class Game implements RenderableInterface
 		return background;
 	}
 
-	public String getMusic()
+	public AudioAsset getMusic()
 	{
 		return music;
 	}
