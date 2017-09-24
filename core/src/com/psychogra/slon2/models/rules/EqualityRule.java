@@ -19,7 +19,7 @@ public class EqualityRule extends Rule
 			int copy_index = -1;
 
 			for (int i = 0, size = progress.size(); i < size; i++) {
-				if (-1 == (copy_index = copy.indexOf(model.get(i)))) {
+				if (-1 == (copy_index = copy.indexOf(progress.get(i)))) {
 					return false;
 				}
 

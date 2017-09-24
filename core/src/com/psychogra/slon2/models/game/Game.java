@@ -1,5 +1,6 @@
 package com.psychogra.slon2.models.game;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.psychogra.slon2.BundleManagement.AudioAsset;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
@@ -28,6 +29,8 @@ abstract public class Game implements RenderableInterface
 	public abstract void run();
 
 	public abstract void invalidate();
+
+	public abstract InputProcessor getProcessor();
 
 	@Override
 	public void render(SpriteBatch batch)

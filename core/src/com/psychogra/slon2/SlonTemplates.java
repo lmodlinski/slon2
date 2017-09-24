@@ -24,32 +24,39 @@ import java.util.ArrayList;
 
 public class SlonTemplates
 {
+	public SlonTemplates()
+	{
+	}
+
 	public Game getPopeGame()
 	{
 		GraphicAsset stol = this.getAsset("stol", "pope_bundle/table.png");
 		GraphicAsset recipe = this.getAsset("przepis", "badlogic.jpg");
 		GraphicAsset ingredient = this.getAsset("skladnik", "pope_bundle/cream.PNG");
+		GraphicAsset piernik = this.getAsset("skladnik", "pope_bundle/piernik.png");
 		GraphicAsset pot = this.getAsset("gar", "pope_bundle/pope.PNG");
 		GraphicAsset result = this.getAsset("result", "pope_bundle/recipe_bg.jpg");
 
-		AudioAsset sound = this.getSound("sound", "pope_bundle/sound.mp3");
+		AudioAsset sound = this.getSound("sound", "pope_bundle/sound.wav");
 
 		ArrayList<Ingredient> recipeList = new ArrayList<Ingredient>();
-		recipeList.add(this.getIngredient("kremowka_1", new Vector2(1500, 1200), ingredient, sound, 50.0f));
-		recipeList.add(this.getIngredient("kremowka_2", new Vector2(1200, 1200), ingredient, sound, 50.0f));
-		recipeList.add(this.getIngredient("kremowka_3", new Vector2(900, 1200), ingredient, sound, 50.0f));
+		recipeList.add(this.getIngredient("kremowka_1", new Vector2(1500, 1400), ingredient, sound, 50.0f));
+		recipeList.add(this.getIngredient("kremowka_2", new Vector2(1200, 1400), ingredient, sound, 50.0f));
+		recipeList.add(this.getIngredient("kremowka_3", new Vector2(900, 1400), ingredient, sound, 50.0f));
 
 		ArrayList<Ingredient> tableList = new ArrayList<Ingredient>();
-		tableList.add(this.getIngredient("kremowka_1", new Vector2(1500, 100), ingredient, sound, 50.0f));
-		tableList.add(this.getIngredient("kremowka_2", new Vector2(1200, 100), ingredient, sound, 50.0f));
-		tableList.add(this.getIngredient("kremowka_3", new Vector2(900, 100), ingredient, sound, 50.0f));
+		tableList.add(this.getIngredient("kremowka_1", new Vector2(1500, 200), ingredient, sound, 50.0f));
+		tableList.add(this.getIngredient("kremowka_2", new Vector2(1200, 200), ingredient, sound, 50.0f));
+		tableList.add(this.getIngredient("kremowka_3", new Vector2(900, 200), ingredient, sound, 50.0f));
+		tableList.add(this.getIngredient("piernik_1", new Vector2(500, 200), piernik, sound, 50.0f));
+		tableList.add(this.getIngredient("piernik_2", new Vector2(1900, 200), piernik, sound, 50.0f));
 
 
 		return new PotGame(ingredient, sound,
-				new Dish("pope_dish", "pope_dish", result, config.getCenter(),
-						new Recipe("pope_recipe", "pope_recipe", recipe, new Vector2(100, 100), recipeList, this.getEqualityRules()),
-						new Table("pope_table", "pope_table", stol, new Vector2(200, 200), tableList)),
-				new Pot("pope_pot", "pope_pot", pot, config.getCenter(), null, sound, 10.0f));
+				new Dish("pope_dish", "pope_dish", result, new Vector2(1200, 750),
+						new Recipe("pope_recipe", "pope_recipe", recipe, new Vector2(100, 100), recipeList, this.getSequenceRules()),
+						new Table("pope_table", "pope_table", stol, new Vector2(0, 0), tableList)),
+				new Pot("pope_pot", "pope_pot", pot, new Vector2(1200, 750), null, sound, 10.0f));
 	}
 
 	public ArrayList<Rule> getSequenceRules()
