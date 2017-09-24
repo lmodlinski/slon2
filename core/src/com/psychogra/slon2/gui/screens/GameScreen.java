@@ -9,10 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.psychogra.slon2.BundleManagement.BundleDTO;
 import com.psychogra.slon2.BundleManagement.BundleManager;
-import com.psychogra.slon2.SlonTemplates;
 import com.psychogra.slon2.config;
 import com.psychogra.slon2.models.factory.GameFactory;
 import com.psychogra.slon2.models.game.Game;
+import com.psychogra.slon2.models.game.PotGame;
+import com.psychogra.slon2.models.rules.EqualityRule;
 
 /**
  * Created by lmodlinski on 24/09/2017.
@@ -39,6 +40,7 @@ public class GameScreen implements Screen
 
 		BundleDTO bundle = BundleManager.deserializeBundle("bundle");
 		this.game = (new GameFactory(bundle)).getGame(bundle.games[0]);
+		((PotGame) this.game).getDish().getRecipe().getRules().add(new EqualityRule());
 
 		//this.game = (new SlonTemplates()).getPopeGame();
 		this.game.run();
