@@ -23,7 +23,7 @@ import com.psychogra.slon2.SlonTemplates;
 public class MainScreen implements Screen
 {
 	private Stage stage;
-
+	private SlonMain slonMain;
 	private VerticalGroup group;
 
 	private ImageButton start;
@@ -33,6 +33,7 @@ public class MainScreen implements Screen
 
 	public MainScreen(SlonMain main)
 	{
+		this.slonMain = main;
 		SlonTemplates templates = new SlonTemplates();
 
 		GraphicAsset start_button = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");
@@ -123,7 +124,7 @@ public class MainScreen implements Screen
 		@Override
 		public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 		{
-			this.main.setScreen(new GameScreen());
+			this.main.setScreen(new LevelScreen(slonMain));
 		}
 	}
 }
