@@ -41,7 +41,7 @@ public class LevelScreen implements Screen
 
 			GraphicAsset start_button = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");
 			GraphicAsset play_button = templates.getAsset("main_screen_start_button", "gui/main_screen_play_button.png");
-			GraphicAsset background = templates.getAsset("main_screen_background", "gui/main_screen_background.jpg");
+			GraphicAsset background = templates.getAsset("main_screen_background", "gui/levels_screen_background.png");
 
 			GraphicAsset level1Asset = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");
 			GraphicAsset level2Asset = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");

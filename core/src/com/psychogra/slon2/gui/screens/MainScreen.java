@@ -3,14 +3,9 @@ package com.psychogra.slon2.gui.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
 import com.psychogra.slon2.SlonMain;
@@ -22,39 +17,20 @@ import com.psychogra.slon2.SlonTemplates;
 
 public class MainScreen implements Screen
 {
+	private SlonMain main;
 	private Stage stage;
-	private SlonMain slonMain;
-	private VerticalGroup group;
-
-	private ImageButton start;
-	private ImageButton next;
 
 	private GraphicAsset background;
 
 	public MainScreen(SlonMain main)
 	{
-		this.slonMain = main;
-		SlonTemplates templates = new SlonTemplates();
+		GraphicAsset background = (new SlonTemplates()).getAsset("main_screen_background", "gui/main_screen_background.png");
 
-		GraphicAsset start_button = templates.getAsset("main_screen_start_button", "gui/main_screen_start_button.png");
-		GraphicAsset play_button = templates.getAsset("main_screen_start_button", "gui/main_screen_play_button.png");
-		GraphicAsset background = templates.getAsset("main_screen_background", "gui/main_screen_background.jpg");
-
-		this.start = new ImageButton(new TextureRegionDrawable(new TextureRegion(start_button.getTexture())));
-		this.start.addListener(new MainScreenInputListener(main));
-
-		this.next = new ImageButton(new TextureRegionDrawable(new TextureRegion(play_button.getTexture())));
-
-		this.group = new VerticalGroup();
-		this.group.setFillParent(true);
-		this.group.addActor(this.start);
-		this.group.addActor(this.next);
-		this.group.align(Align.center);
-
+		this.main = main;
 		this.background = background;
 
 		this.stage = new Stage(new ScreenViewport());
-		this.stage.addActor(this.group);
+		this.stage.addListener(new MainScreenInputListener(main));
 	}
 
 	@Override
@@ -124,7 +100,7 @@ public class MainScreen implements Screen
 		@Override
 		public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 		{
-			this.main.setScreen(new LevelScreen(slonMain));
+			this.main.setScreen(new LevelScreen(MainScreen.this.main));
 		}
 	}
 }
