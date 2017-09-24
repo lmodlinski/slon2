@@ -44,7 +44,7 @@ public class LevelScreen implements Screen
 		GraphicAsset background = templates.getAsset("main_screen_background", "gui/Ekran_wyboru_poziomu.png");
 		GraphicAsset level1Asset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom2.png");
 		GraphicAsset level2Asset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom.png");
-		GraphicAsset otherLevelsAsset = templates.getAsset("main_screen_start_button", "gui/Nieaktywny_poziom.png");
+		GraphicAsset otherLevelsAsset = templates.getAsset("main_screen_start_button", "gui/Aktywny_poziom3.png");
 
 		//this.start = new ImageButton(new TextureRegionDrawable(new TextureRegion(start_button.getTexture())));
 		//this.start.addListener(new MainScreenInputListener(main));
