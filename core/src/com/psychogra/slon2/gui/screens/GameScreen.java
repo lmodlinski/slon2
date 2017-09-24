@@ -15,6 +15,7 @@ import com.psychogra.slon2.models.factory.GameFactory;
 import com.psychogra.slon2.models.game.Game;
 import com.psychogra.slon2.models.game.PotGame;
 import com.psychogra.slon2.models.rules.EqualityRule;
+import com.psychogra.slon2.models.rules.Rule;
 
 /**
  * Created by lmodlinski on 24/09/2017.
@@ -30,7 +31,7 @@ public class GameScreen implements Screen
 
 	private Game game;
 
-	public GameScreen(SlonMain main)
+	public GameScreen(SlonMain main, Rule rule)
 	{
 		this.main = main;
 
@@ -44,7 +45,7 @@ public class GameScreen implements Screen
 
 		BundleDTO bundle = BundleManager.deserializeBundle("bundle");
 		this.game = (new GameFactory(bundle)).getGame(bundle.games[0]);
-		((PotGame) this.game).getDish().getRecipe().getRules().add(new EqualityRule());
+		((PotGame) this.game).getDish().getRecipe().getRules().add(rule);
 
 		//this.game = (new SlonTemplates()).getPopeGame();
 		this.game.run();
