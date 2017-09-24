@@ -75,7 +75,7 @@ abstract public class Game implements RenderableInterface
 
 	public enum Result
 	{
-		SUCCESS, IN_PROGRESS, FAILURE
+		SUCCESS, IN_PROGRESS, FAILURE, EXITING
 	}
 }
 

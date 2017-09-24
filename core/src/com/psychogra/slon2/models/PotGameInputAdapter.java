@@ -24,14 +24,21 @@ public class PotGameInputAdapter extends InputAdapter
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button)
 	{
-		this.drag = new Drag(100.0f, new Vector2(x, config.height - y));
-		Ingredient held = this.game.closest(this.drag);
+		switch (this.game.getResult()) {
+			case EXITING:
+			case SUCCESS:
+			case FAILURE:
+				this.game.exit();
+				break;
+			case IN_PROGRESS:
+				this.drag = new Drag(100.0f, new Vector2(x, config.height - y));
+				Ingredient held = this.game.closest(this.drag);
 
-		if (held != null) {
-
-			drag.setPosition(held.getPosition());
-			this.drag.setGameObject(held);
-
+				if (held != null) {
+					this.drag.setPosition(held.getPosition());
+					this.drag.setGameObject(held);
+				}
+				break;
 		}
 
 		return true;

@@ -189,6 +189,11 @@ public class PotGame extends Game
 		return closest;
 	}
 
+	public void exit()
+	{
+		this.result = Result.EXITING;
+	}
+
 	public Dish getDish()
 	{
 		return dish;
