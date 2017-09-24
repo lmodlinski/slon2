@@ -159,11 +159,11 @@ public class GameFactory
 
 		int len = positions.size();
 		for(int i = 0; i < len; i++){
-			if(tag.equals(positions.get(i))){
+			if(tag.equals(positions.get(i).tag)){
 				return positions.remove(i).position;
 			}
 		}
-		Gdx.app.log("Factory", "No more positions of: " + tag);
+		Gdx.app.log("Factory_array", "No more positions of: " + tag);
 		return null;
 	}
 
@@ -177,7 +177,7 @@ public class GameFactory
 			if(pos.tag.equals(tag))
 				return pos.position;
 		}
-		Gdx.app.log("Factory", "No more positions of: " + tag);
+		Gdx.app.log("Factory_scene", "No more positions of: " + tag);
 		return null;
 	}
 }

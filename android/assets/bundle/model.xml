@@ -65,7 +65,7 @@
                             </element>
                             <element>
                                 <key>bulgingSoundFX</key>
-                                <value>null</value>
+                                <value>ingredient</value>
                             </element>
                             <element>
                                 <key>radius</key>
@@ -90,11 +90,11 @@
                             </element>
                             <element>
                                 <key>droppingSound</key>
-                                <value>null</value>
+                                <value>ingredient</value>
                             </element>
                             <element>
                                 <key>draggingSound</key>
-                                <value>null</value>
+                                <value>ingredient</value>
                             </element>
                             <element>
                                 <key>radius</key>
@@ -115,7 +115,7 @@
                         <id>table</id>
                         <name>stół</name>
                         <type>Table</type>
-                        <image>null</image>
+                        <image>background</image>
                         <positionGroup>pot</positionGroup>
                         <extraAttributes>
                         </extraAttributes>
@@ -124,7 +124,7 @@
                         <id>recipe</id>
                         <name>przepis</name>
                         <type>Recipe</type>
-                        <image>null</image>
+                        <image>ingredient</image>
                         <positionGroup>recipe</positionGroup>
                         <extraAttributes>
                         </extraAttributes>
