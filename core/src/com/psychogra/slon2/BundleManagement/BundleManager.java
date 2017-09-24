@@ -120,6 +120,14 @@ public class BundleManager {
                 dish.id = element.getAttribute("id");
                 dish.recipId = element.getAttribute("recipId");
                 dish.tableId = element.getAttribute("tableId");
+                dish.recipePositions = getList(element.getChildByName("recipePositions"), new IConverter<Vector2>() {
+                    @Override
+                    public Vector2 convert(XmlReader.Element element) {
+                        float x = Float.parseFloat(element.getAttribute("x"));
+                        float y = Float.parseFloat(element.getAttribute("y"));
+                        return new Vector2(x, y);
+                    }
+                });
                 return dish;
             }
         }).toArray();

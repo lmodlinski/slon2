@@ -72,9 +72,10 @@ public class GameFactory
 		);
 	}
 	private Recipe getRecipe(DishDTO dto, SceneDTO scene){
+		ArrayList<Vector2> positions = new ArrayList<Vector2>(dto.recipePositions);
 		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
 		for(String id: dto.recip){
-			ingredients.add(getRecipeIngredient(scene.gameObjects.get(id)));
+			ingredients.add(getRecipeIngredient(scene.gameObjects.get(id), positions));
 		}
 		GameObjectDTO recipeDTO = scene.gameObjects.get(dto.recipId);
 		return new Recipe(
@@ -87,12 +88,12 @@ public class GameFactory
 		);
 	}
 
-	private Ingredient getRecipeIngredient(GameObjectDTO go){
+	private Ingredient getRecipeIngredient(GameObjectDTO go, ArrayList<Vector2> allowedPossitions){
 		Ingredient ingredient = new Ingredient(
 				go.id,
 				go.name,
 				go.image,
-				null,
+				getPosition(allowedPossitions),
 				getGraphicAsset(go.extraAttributes.get("inGameImage")),
 				getGraphicAsset(go.extraAttributes.get("droppedImage")),
 				getSoundAsset(go.extraAttributes.get("droppingSound")),
@@ -164,6 +165,11 @@ public class GameFactory
 		}
 		Gdx.app.log("Factory", "No more positions of: " + tag);
 		return null;
+	}
+
+	private Vector2 getPosition(ArrayList<Vector2> positions){
+
+		return positions.remove(0);
 	}
 
 	private  Vector2 getPosition(String tag, SceneDTO scene){
