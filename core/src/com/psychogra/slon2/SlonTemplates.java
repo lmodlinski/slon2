@@ -37,7 +37,7 @@ public class SlonTemplates
 		GraphicAsset pot = this.getAsset("gar", "pope_bundle/pope.PNG");
 		GraphicAsset result = this.getAsset("result", "pope_bundle/recipe_bg.jpg");
 
-		AudioAsset sound = this.getSound("sound", "pope_bundle/sound.wav");
+		AudioAsset sound = this.getSound("sound", "pope_bundle/beep.wav");
 
 		ArrayList<Ingredient> recipeList = new ArrayList<Ingredient>();
 		recipeList.add(this.getIngredient("kremowka_1", new Vector2(1500, 1400), ingredient, sound, 50.0f));

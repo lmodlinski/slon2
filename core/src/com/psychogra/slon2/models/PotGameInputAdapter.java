@@ -24,26 +24,33 @@ public class PotGameInputAdapter extends InputAdapter
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button)
 	{
-		drag = new Drag(100.0f, new Vector2(x, config.height - y));
-		Ingredient held = this.game.closest(drag);
+		this.drag = new Drag(100.0f, new Vector2(x, config.height - y));
+		Ingredient held = this.game.closest(this.drag);
+
 		if (held != null) {
-			drag.setGameObject(held);
+			this.drag.setGameObject(held);
 
 		}
+
 		return true;
 	}
 
 	@Override
 	public boolean touchUp(int x, int y, int pointer, int button)
 	{
-		if (drag.getGameObject() != null) {
-			boolean droppedIt = this.game.drop(drag.getGameObject());
-			if (!droppedIt) {
-				drag.getGameObject().setPosition(drag.getPosition());
+		if (this.drag.getGameObject() != null) {
+			if (!this.game.drop(this.drag.getGameObject())) {
+				this.drag.getGameObject().setPosition(
+						this.drag.getPosition()
+				);
+			} else {
+				this.game.getPot().getBulgingSoundFX().getSound().play(1.0f);
 			}
-			drag.releaseGameObject();
+
+			this.drag.releaseGameObject();
 
 		}
+
 		return true;
 	}
 
@@ -51,10 +58,11 @@ public class PotGameInputAdapter extends InputAdapter
 	public boolean touchDragged(int x, int y, int pointer)
 	{
 
-		if (drag.getGameObject() != null) {
-			GameObject object = drag.getGameObject();
+		if (this.drag.getGameObject() != null) {
+			GameObject object = this.drag.getGameObject();
 			object.setPosition(new Vector2(x, config.height - y));
 		}
+
 		return true;
 	}
 }

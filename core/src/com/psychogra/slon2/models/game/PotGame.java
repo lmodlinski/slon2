@@ -128,6 +128,7 @@ public class PotGame extends Game
 			if (this.getDish().getRecipe().isValid(copy)) {
 				this.getProgress().add(ingredient);
 				this.getDish().getTable().drop(ingredient);
+
 				this.invalidate();
 
 				return true;
