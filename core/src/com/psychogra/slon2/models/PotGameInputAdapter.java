@@ -31,14 +31,16 @@ public class PotGameInputAdapter extends InputAdapter
 				this.game.exit();
 				break;
 			case IN_PROGRESS:
-				this.drag = new Drag(100.0f, new Vector2(x, config.height - y));
-				Ingredient held = this.game.closest(this.drag);
+				if (!this.game.hasClock() || !this.game.getClock().ticking()) {
+					this.drag = new Drag(100.0f, new Vector2(x, config.height - y));
+					Ingredient held = this.game.closest(this.drag);
 
-				if (held != null) {
-					this.drag.setPosition(held.getPosition());
-					this.drag.setGameObject(held);
+					if (held != null) {
+						this.drag.setPosition(held.getPosition());
+						this.drag.setGameObject(held);
+					}
+					break;
 				}
-				break;
 		}
 
 		return true;

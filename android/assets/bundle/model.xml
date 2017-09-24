@@ -74,7 +74,7 @@
                     <position>
                         <tag>recipe</tag>
                         <x>0</x>
-                        <y>0</y>
+                        <y>1080</y>
                     </position>
 
 
@@ -268,7 +268,7 @@
                         </element>
                         <element>
                             <key>time</key>
-                            <value>0</value>
+                            <value>7</value>
                         </element>
                         <element>
                             <key>radius</key>
@@ -292,7 +292,7 @@
                         </element>
                         <element>
                             <key>time</key>
-                            <value>0</value>
+                            <value>3</value>
                         </element>
                         <element>
                             <key>radius</key>
