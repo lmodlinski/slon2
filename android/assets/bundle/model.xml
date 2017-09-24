@@ -170,29 +170,25 @@
         </game>
     </games>
     <graphicAssets>
-        <graphicAsset>
-            <id>pot</id>
-            <path>elements/a.png</path>
-            <x>0.6</x>
-            <y>.2</y>
-        </graphicAsset>
-        <graphicAsset>
-            <id>ingredient</id>
-            <path>elements/b.png</path>
-            <x>0.6</x>
-            <y>.2</y>
-        </graphicAsset>
-        <graphicAsset>
-            <id>background</id>
-            <path>bg.png</path>
-            <x>0.6</x>
-            <y>.2</y>
-        </graphicAsset>
+        <graphicAsset><id>gfx_Baklazan</id><path>skladniki/Baklazan.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Cebula</id><path>skladniki/Cebula.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Cytryna</id><path>skladniki/Cytryna.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Czosnek</id><path>skladniki/Czosnek.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Kalafior</id><path>skladniki/Kalafior.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Marchewki</id><path>skladniki/Marchewki.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Mieso</id><path>skladniki/Mieso.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Ogorki</id><path>skladniki/Ogorki.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Papryki</id><path>skladniki/Papryki.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Pomidory</id><path>skladniki/Pomidory.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Ryby</id><path>skladniki/Ryby.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Salata</id><path>skladniki/Salata.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Ziemniaki</id><path>skladniki/Ziemniaki.png</path><x>1</x><y>1</y></graphicAsset>
+        <graphicAsset><id>gfx_Rzodkiewki</id><path>skladniki/Rzodkiewki.png</path><x>1</x><y>1</y></graphicAsset>
     </graphicAssets>
     <audioAssets>
         <!--<audioAsset>-->
-            <!--&lt;!&ndash;<id>zarzynanie</id>&ndash;&gt;-->
-            <!--&lt;!&ndash;<path>x/y.mp3</path>&ndash;&gt;-->
+            <!--<id>zarzynanie</id>-->
+            <!--<path>x/y.mp3</path>-->
         <!--</audioAsset>-->
     </audioAssets>
 </bundle>

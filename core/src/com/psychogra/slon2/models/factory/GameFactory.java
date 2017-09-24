@@ -130,7 +130,8 @@ public class GameFactory
 				getGraphicAsset(go.extraAttributes.get("droppedImage")),
 				getSoundAsset(go.extraAttributes.get("droppingSound")),
 				getSoundAsset(go.extraAttributes.get("draggingSound")),
-				Float.parseFloat(go.extraAttributes.get("radius"))
+				Float.parseFloat(go.extraAttributes.get("radius")),
+				Float.parseFloat(go.extraAttributes.get("time"))
 		);
 		return ingredient;
 	}
