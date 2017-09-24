@@ -1,6 +1,7 @@
 package com.psychogra.slon2.models.factory;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.psychogra.slon2.BundleManagement.AudioAsset;
 import com.psychogra.slon2.BundleManagement.BundleDTO;
@@ -13,6 +14,7 @@ import com.psychogra.slon2.BundleManagement.PotGameDTO;
 import com.psychogra.slon2.BundleManagement.SceneDTO;
 import com.psychogra.slon2.models.game.Game;
 import com.psychogra.slon2.models.game.PotGame;
+import com.psychogra.slon2.models.pot.Clock;
 import com.psychogra.slon2.models.pot.Dish;
 import com.psychogra.slon2.models.pot.Ingredient;
 import com.psychogra.slon2.models.pot.Pot;
@@ -51,12 +53,14 @@ public class GameFactory
 	}
 
 	private PotGame getPotGame(PotGameDTO dto){
+		GraphicAsset clock = new GraphicAsset("clock", new Texture("bundle/Czekajka.png"));
 
 		return new PotGame(
 				dto.background,
 				dto.audio,
 				getDish(dto.dishes.get(0), dto.scene),
-				getPot(dto.scene.gameObjects.get(dto.potId), dto.scene)
+				getPot(dto.scene.gameObjects.get(dto.potId), dto.scene),
+				new Clock("pope_timer", "pope_timer", clock, new Vector2(0, 0))
 		);
 	}
 	private Dish getDish(DishDTO dto, SceneDTO scene){

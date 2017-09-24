@@ -13,57 +13,57 @@
                     <position>
                         <tag>pot</tag>
                         <x>812</x>
-                        <y>742</y>
+                        <y>338</y>
                     </position>
 
                     <position>
                         <tag>talerz</tag>
                         <x>175</x>
-                        <y>390</y>
+                        <y>690</y>
                     </position>
                     <position>
                         <tag>talerz</tag>
                         <x>175</x>
-                        <y>660</y>
+                        <y>420</y>
                     </position>
 
                     <position>
                         <tag>talerz</tag>
                         <x>440</x>
-                        <y>390</y>
+                        <y>690</y>
                     </position>
                     <position>
                         <tag>talerz</tag>
                         <x>440</x>
-                        <y>660</y>
+                        <y>420</y>
                     </position>
 
                     <position>
                         <tag>talerz</tag>
                         <x>790</x>
-                        <y>390</y>
+                        <y>690</y>
                     </position>
                     <position>
                         <tag>talerz</tag>
                         <x>1080</x>
-                        <y>390</y>
+                        <y>690</y>
                     </position>
 
                     <position>
                         <tag>talerz</tag>
                         <x>1440</x>
-                        <y>390</y>
+                        <y>690</y>
                     </position>
                     <position>
                         <tag>talerz</tag>
                         <x>1440</x>
-                        <y>660</y>
+                        <y>420</y>
                     </position>
 
                     <position>
                         <tag>talerz</tag>
                         <x>1740</x>
-                        <y>390</y>
+                        <y>690</y>
                     </position>
 
                     <position>
@@ -90,7 +90,7 @@
                         <extraAttributes>
                             <element>
                                 <key>cookingImage</key>
-                                <value>a.png</value>
+                                <value>pot/Garnek.png</value>
                             </element>
                             <element>
                                 <key>bulgingSoundFX</key>
@@ -388,7 +388,7 @@
                         </element>
                         <element>
                             <key>time</key>
-                            <value>0</value>
+                            <value>2</value>
                         </element>
                         <element>
                             <key>radius</key>
@@ -412,7 +412,7 @@
                         </element>
                         <element>
                             <key>time</key>
-                            <value>0</value>
+                            <value>3</value>
                         </element>
                         <element>
                             <key>radius</key>
@@ -486,37 +486,37 @@
                         <position>
                             <tag>ingredient</tag>
                             <x>500</x>
-                            <y>120</y>
+                            <y>960</y>
                         </position>
                         <position>
                             <tag>ingredient</tag>
                             <x>700</x>
-                            <y>120</y>
+                            <y>960</y>
                         </position>
                         <position>
                             <tag>ingredient</tag>
                             <x>900</x>
-                            <y>120</y>
+                            <y>960</y>
                         </position>
                         <position>
                             <tag>ingredient</tag>
                             <x>1120</x>
-                            <y>120</y>
+                            <y>960</y>
                         </position>
                         <position>
                             <tag>ingredient</tag>
                             <x>1320</x>
-                            <y>120</y>
+                            <y>960</y>
                         </position>
                         <position>
                             <tag>ingredient</tag>
                             <x>1520</x>
-                            <y>120</y>
+                            <y>960</y>
                         </position>
                         <position>
                             <tag>ingredient</tag>
                             <x>1724</x>
-                            <y>120</y>
+                            <y>960</y>
                         </position>
                     </recipePositions>
                 </dish>
@@ -527,26 +527,27 @@
     <graphicAssets>
         <graphicAsset>
             <id>pot</id>
-            <path>elements/a.png</path>
+            <path>pot/Garnek.png</path>
             <x>0.6</x>
             <y>.2</y>
         </graphicAsset>
         <graphicAsset>
             <id>table</id>
-            <path>elements/b.png</path>
+            <path>bg.png</path>
             <x>0.6</x>
             <y>.2</y>
         </graphicAsset>
 
         <graphicAsset>
             <id>dish</id>
-            <path>elements/b.png</path>
+            <path>elements/c.png</path>
             <x>0.6</x>
             <y>.2</y>
         </graphicAsset>
+
         <graphicAsset>
-            <id>table</id>
-            <path>elements/b.png</path>
+            <id>recipe</id>
+            <path>Pasek_Przepisu.png</path>
             <x>0.6</x>
             <y>.2</y>
         </graphicAsset>
