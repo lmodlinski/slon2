@@ -43,6 +43,12 @@
                     <table>
                         <indegriend>2</indegriend>
                     </table>
+                    <recipePositions>
+                        <position>
+                            <x>24</x>
+                            <y>32</y>
+                        </position>
+                    </recipePositions>
                 </dish>
             </dishes>
             <potId>123</potId>
