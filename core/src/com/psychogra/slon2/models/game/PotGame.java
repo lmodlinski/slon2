@@ -2,6 +2,7 @@ package com.psychogra.slon2.models.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.psychogra.slon2.BundleManagement.GraphicAsset;
+import com.psychogra.slon2.config;
 import com.psychogra.slon2.models.PotGameInputProcessor;
 import com.psychogra.slon2.models.interfaces.CollisionInterface;
 import com.psychogra.slon2.models.pot.Dish;
@@ -61,8 +62,10 @@ public class PotGame extends Game
 
 		batch.draw(
 				table.getImage().getTexture(),
-				table.getCenteredPosition().x,
-				table.getCenteredPosition().y
+				0,
+				0,
+				config.width,
+				config.height
 		);
 
 		this.pot.render(batch);
@@ -82,6 +85,20 @@ public class PotGame extends Game
 				recipe.getCenteredPosition().y
 		);
 
+		// recipe
+		this.renderRecipeIngredients(batch);
+
+		if (this.getResult() == Result.SUCCESS) {
+			batch.draw(
+					dish.getImage().getTexture(),
+					dish.getCenteredPosition().x,
+					dish.getCenteredPosition().y
+			);
+		}
+	}
+
+	private void renderRecipeIngredients(SpriteBatch batch)
+	{
 		for (Ingredient ingredient : this.getDish().getRecipe().getIngredients()) {
 			if (-1 == this.getProgress().indexOf(ingredient)) {
 				batch.draw(
@@ -90,14 +107,6 @@ public class PotGame extends Game
 						ingredient.getCenteredPosition().y
 				);
 			}
-		}
-
-		if (this.getResult() == Result.SUCCESS) {
-			batch.draw(
-					dish.getImage().getTexture(),
-					dish.getCenteredPosition().x,
-					dish.getCenteredPosition().y
-			);
 		}
 	}
 
