@@ -45,12 +45,11 @@ public class PotGameInputAdapter extends InputAdapter
 				this.drag.getGameObject().setPosition(
 						this.drag.getPosition()
 				);
-			} else {
+			} else if (null != this.game.getPot().getBulgingSoundFX()) {
 				this.game.getPot().getBulgingSoundFX().getSound().play(1.0f);
 			}
 
 			this.drag.releaseGameObject();
-
 		}
 
 		return true;

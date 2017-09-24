@@ -81,7 +81,7 @@ public class PotGame extends Game
 
 		GraphicAsset image = table.getImage();
 
-		if(image != null)
+		if (image != null) {
 			batch.draw(
 					image.getTexture(),
 					0,
@@ -89,6 +89,7 @@ public class PotGame extends Game
 					config.width,
 					config.height
 			);
+		}
 
 		this.pot.render(batch);
 
