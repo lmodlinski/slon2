@@ -135,8 +135,8 @@ public class PotGame extends Game
 		if (this.getResult() == Result.SUCCESS) {
 			batch.draw(
 					this.getDish().getImage().getTexture(),
-					this.getDish().getCenteredPosition().x,
-					this.getDish().getCenteredPosition().y
+					this.getDish().getPosition().x,
+					this.getDish().getPosition().y
 			);
 		}
 	}
